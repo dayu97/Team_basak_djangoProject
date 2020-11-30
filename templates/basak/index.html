@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basak Main</title>
+
+<link rel="stylesheet" href="{{baseUrl}}/css/index.css" />
+<!--********** 【 글씨체 수입 】**********  -->
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<!--********** 【 js 링크 걸기 】********** -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script src="{{baseUrl}}/js/index_main.js"></script>
+
+	<style>
+
+
+	.carImg {
+
+		position: relative;
+		float: right;
+		right: -44px;
+		top: 37px;
+		width: auto; height: auto;
+   		max-width: 67px;
+    	max-height: 67px;
+
+
+}
+
+
+	.logout {
+		position: relative;
+		float: right;
+		right: -75px;
+		top: 35px;
+		width: auto; height: auto;
+   		max-width: 70px;
+    	max-height: 70px;
+    	visibility:none;
+
+}
+
+
+
+	.logImg {
+		position: relative;
+		float: right;
+		right: 113px;
+		top: 35px;
+		width: auto; height: auto;
+   		max-width: 70px;
+    	max-height: 70px;
+    	visibility:none;
+
+}
+.mypage {
+		position: relative;
+		float: right;
+		right: 147px;
+		top: 19px;
+		width: auto; height: auto;
+   	max-width: 100px;
+   	max-height: 100px;
+   	visibility:none;
+
+}
+
+
+
+		.logmsg {
+		position: relative;
+		float: right;
+		right: 525px;
+		top: 57px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 70px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+		.admin {
+		position: relative;
+		float: right;
+		right: 196px;
+		top: 37px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 70px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+		.boardImg {
+		position: relative;
+		float: right;
+		right: -207px;
+		top: 37px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 70px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+		.boardAdmin {
+		position: relative;
+		float: right;
+		right: -127px;
+		top: 37px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 70px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+		.boardmain {
+		position: relative;
+		float: right;
+		right: 135px;
+		top: 34px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 76px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+	</style>
+
+
+
+
+</head>
+
+<body>
+
+
+	<script>
+	$(document).ready(function(){
+		$('.carImg').click(function(){
+			if( i == 1 ){
+				alert("장바구니는 로그인 이후 이용 가능합니다")
+			}
+		})
+	})
+	</script>
+
+
+
+
+   <form class="mainPage"> 
+   
+   <div class="mainForm" id="mainForm" >        
+   
+  <!-----------------    【  top  】 -------------------->
+    
+       <form class="topForm" method="post"> 
+       
+		   <div class="topGroup" id="topGroup">	
+	        	<div class="titleForm">
+	   				<p1>
+		   				<a href=''>
+		   				<img class="titImg" src="{{baseUrl}}/img/title.png">
+		   				</a>	       		
+	   				</form> 			
+		   			
+
+					{% if 'user_mid' in request.session %}
+					<div class="logmsg">{{request.session.user_mname}}님 반갑습니다.</div>
+					<a href="logout"><img class="logout" src="{{baseUrl}}/img/logout.png"></a>
+	   					{% if 'admin' in request.session.user_mid %}
+							 <a href='admin_index'>
+								<img class="admin" src="{{baseUrl}}//img/admin.png">
+							</a>
+							<a href='board'>
+								<img class="boardAdmin" src="{{baseUrl}}//img/Q&A.png">
+							</a>
+	   						{%  else %}
+	   						<a href="mypage?mid={{request.session.user_mid}}">
+									<img class="mypage" src="{{baseUrl}}/img/mypage.png">
+							</a>
+							 <a href="cart" ><!--  다유 카트 페이지 views에 있는거 연동하기  -->
+								<img class="carImg" src="{{baseUrl}}/img/cart.png">
+							</a>
+							<a href='board'>
+								<img class="boardImg" src="{{baseUrl}}//img/Q&A.png">
+							</a>
+						 {% endif %}
+					{%  else %}
+	   				<script>i = 1</script>
+		   			<a href='login'><img class="logImg" src="{{baseUrl}}/img/login.png"></a>
+	   		   		<a href='board'><img class="boardmain" src="{{baseUrl}}//img/Q&A.png"></a>
+					{% endif %}
+
+		   			
+		   			
+
+		   				
+		   				
+		   					
+
+		   						
+		   						   				
+	        		</p1>  
+	         	</div>  <!--   end of  titleForm -->
+	     
+      	 </div>  <!--  end of  topGroup -->
+	   </form> <!-- end of  topForm -->
+	   			
+	 		
+	   				
+	<!-----------------    【  body 】 -------------------->
+
+		<form class="bodyForm">
+			<table>
+				<div class="bodyGroup" id="bodyGroup">
+						<ul class="Goods">
+						<tr class="GoodsGrop">
+								{% for i in plist %}
+								<a href="product_de?pID={{i.0}}" target="product_de"><img src="{{baseUrl}}/img/{{i.5}}"  name='pID'  class="rollover" />
+								</a>
+								{% endfor %}
+							</tr>
+					</ul>
+				</table>
+			</div>     <!--   end of  bodyGroup -->
+		</form>    <!-- end of  bodyForm -->
+
+
+
+
+	 <!-----------------    【  right 】 -------------------->
+
+  <form>
+       	<div id="rightGroup" class="off">
+			<input type="button" class="cartPop" />
+		   		<iframe class="product_de" name="product_de" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0>
+		   		</iframe >
+	 	 </div>
+	  </form>
+
+
+</div>   <!--   end of  mainForm -->
+</form>  <!--end of  mainPage -->
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원관리</title>
+
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/getMember.css" media="all" />
+
+</head>
+<body>
+
+		<h1 align="center">회원 수정</h1>
+		<hr>
+		<form action="member_update" method="post">
+			{%csrf_token%}
+			<input name="mID" type="hidden" value="{{member.0}}" />
+			<table class="meTable">
+				<tr><td width="70"><h2>아이디</h2></td><td bgcolor="gray">{{member.0}}</td>
+				</tr>
+				<tr>
+					<td width="70"><h2>비밀번호</h2></td>
+					<td align="left"><input name="mPW" type="text" value="{{member.1}}" /></td>
+				</tr>
+				<tr>
+					<td><h2>이름</h2></td>
+					<td align="left"><input name="mNAME" type="text" value="{{member.2}}" /></td>
+				</tr>
+				<tr>
+					<td><h2>주소</h2></td>
+					<td align="left"><input name="mADDRESS" type="text" value="{{member.3}}"></td>
+				</tr>
+				<tr>
+					<td><h2>전화번호</h2></td>
+					<td align="left"><input  name="mPHONE" type="text" value="{{member.4}}"></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" align="center">
+					<input type="submit" class="gmbutton" value="회원 수정" /></td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		<button type="button" class="gmbutton" onclick="location.href='getMemberList' ">회원목록</button>
+</body>
+</html>

@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>board</title>
+
+	<link rel="stylesheet" href="{{baseUrl}}/css/board.css" />
+<!--********** 【 글씨체 수입 】**********  -->
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<!--********** 【 js 링크 걸기 】********** -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="{{baseUrl}}/js/index_main.js" ></script>
+
+</style>
+
+</head>
+<body>
+ <!-----------------    【  top  】 -------------->
+
+       <form class="topForm" method="POST">
+
+		   <div class="topGroup" id="topGroup">
+	        	<div class="titleForm">
+	   				<p1>
+		   				<a href='basak'>
+		   				<img class="titImg" src="{{baseUrl}}/img/title.png">
+		   				</a>
+
+
+					{% if 'user_mid' in request.session %}
+					<div class="logmsg">{{request.session.user_mname}}님 반갑습니다.</div>
+<!--	   				<a href="mypage?mid={{request.session.user_mid}}"><img class="mypage" src="{{baseUrl}}/img/mypage.png"></a>-->
+					<a href="logout"><img class="logImg" src="{{baseUrl}}/img/logout.png"></a>
+					{%  else %}
+		   			<a href='login'><img class="logImg" src="{{baseUrl}}/img/login.png"></a>
+					{% endif %}
+
+<!--		   			 <a href="cart_empty.do" >&lt;!&ndash;  다유 카트 페이지 views에 있는거 연동하기  &ndash;&gt;-->
+<!--		   				<img class="carImg" src="{{baseUrl}}/img/cart.png">-->
+<!--		   			</a>-->
+
+
+
+<!--		   			 <a href='admin_index.do'>&lt;!&ndash;  은내씨 관리자 페이지  &ndash;&gt;-->
+<!--		   				<img class="admImg" src="{{baseUrl}}//img/admin.png">-->
+<!--		   			</a>-->
+
+
+	        		</p1>
+	         	</div>  <!--   end of  titleForm -->
+
+      	 </div>  <!--  end of  topGroup -->
+	   </form> <!-- end of  topForm -->
+
+
+
+<hr>
+
+<h1>📝Q&A</h1>
+<div id="select">
+
+</div>
+<table id="table">
+	<thead>
+	<tr>
+		<th>No</th>
+		<th>카테고리</th>
+		<th>제목</th>
+		<th>회원명</th>
+		<th>날짜</th>
+		<th>삭제</th>
+	</tr>
+	</thead>
+<form action="research">
+	<tfoot>
+		{% for a in arr %}
+			<tr>
+				<input type="hidden" name="bid" value="{{a.5}}">
+				<td>{{a.5}}</td>
+				<td>{{a.0}}</td>
+				<td><a href="select_board?bid={{a.5}}">{{a.2}}</a></td>
+				<td>{{a.1}}</td>
+				<td>{{a.4}}</td>
+				<td><input type="button" value="삭제" onclick="location='delete_board?bid={{a.5}}'"></td>
+			</tr>
+		{% endfor %}
+	</tfoot>
+</table>
+
+<div>
+
+
+	<select name="category" class="board_category" >
+	<option value="">-선택-
+	<option value="회원문의">회원문의
+	<option value="상품문의">상품문의
+	<option value="배송문의">배송문의
+	</select>
+	<input type="text" name="select_write" placeholder="내용을 입력하세요.">
+	<input type="submit" id="select_write_button" value="조회" >
+	<input type="button" id="clear" value="초기화" onclick="location='boardSelect'">
+</form>
+<input type="button" id="new_write" value="새글쓰기" onclick="location='write'">
+</div>
+
+<script>
+
+
+</script>
+
+
+
+</body>
+</html>

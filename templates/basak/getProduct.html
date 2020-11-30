@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>제품 상세</title>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/getProduct.css" media="all" />
+
+<script>
+$(function(){
+	$('#correctBT').click(function(){
+		var pTYPE = $('#pTYPE');
+		if($(':radio[name="pTYPE"]:checked').length < 1){
+			alert('카테고리를 선택해주세요');
+			pTYPE.focus();
+			return false;
+		}
+	});
+});
+</script>
+
+
+</head>
+<body>
+		<h1 align="center">상품 수정</h1>	<br/>	
+		<hr>
+		<form action="updateProduct" method="post">
+			{% csrf_token %}
+			<input name="pID" type="hidden" value="{{detail.0}}" />
+			<table class="bdTable">
+				<tr>
+					<td><h2>상품종류</h2></td>
+					<td align="left">
+					<input type="radio" size="10" name='pTYPE' value='쿠키'/><d>쿠키</d>
+					<input type="radio" size="10" name='pTYPE' value='파이'/><d>파이</d>
+					<input type="radio" size="10" name='pTYPE' value='시리얼'/><d>시리얼</d>
+					<input type="radio" size="10" name='pTYPE' value='견과류'/><d>견과류</d>
+					<input type="radio" size="10" name='pTYPE' value='스낵'/><d>스낵</d>  </td>
+				</tr>
+				<tr>
+					<td><h2>상품명</h2></td>
+					<td align="left"><input name="pNAME" type="text" size="40" value="{{detail.2}}" /></td>
+				</tr>
+				<tr>
+					<td><h2>상품가격</h2></td>
+					<td align="left"><input name="pPRICE" type="text" size="40" value="{{detail.3}}"></td>
+				</tr>
+				<tr>
+					<td><h2>재고</h2></td>
+					<td align="left"><input  name="pAMOUNT" type="text" size="40" value="{{detail.4}}"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" class="gtbutton" id="correctBT" onclick="javascript: form.action='updateProduct' ">상품수정</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<hr>
+		<button type="button" class="gtbutton" onclick="location.href='getProductList' ">상품목록</button>
+	
+</body>
+</html>

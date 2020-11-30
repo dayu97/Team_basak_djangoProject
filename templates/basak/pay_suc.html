@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+
+<link rel="stylesheet" href="{{baseUrl}}/css/index.css" />
+<!--********** 【 글씨체 수입 】**********  -->
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<!--********** 【 js 링크 걸기 】********** -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" href="{{baseUrl}}/js/index_main.js" />
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="google-translate-customization"
+	content="6f1073ba568f1202-9c8990a4b3025b3e-ga74e3ea243d3f01d-14"></meta>
+<!-- 세계 언어선택 메타 태그 -->
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<!-- <script type="text/javascript" src="../../Payment/epay_suc.js"></script> //자스파일 -->
+
+
+<title>결제 완료</title>
+<link rel="stylesheet" type="text/css" href="/static/css/pay_suc.css">
+</head>
+
+
+
+<body>
+
+	<div id="addCartLayer" class="layer_wrap">
+		<div class="box add_cart_layer"
+			style="position:absolute; top:20%; left:25%; ">
+			<div class="view">
+				<h2>결제 완료</h2>
+				<div class="scroll_box">
+					<p class="success">
+						<strong>결제 완료 되었습니다❤</strong><br>
+					</p>
+				</div>
+				<div class="btn_box">
+
+                    <a href="/basak"><button class="btn_confirm btn_move_cart" >
+						<span>확인</span>
+					</button></a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

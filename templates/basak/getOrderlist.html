@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/getOrderList.css" media="all" />
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="/scripts.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	
+</script>
+<meta charset="UTF-8">
+<title>OrderList</title>
+</head>
+<body>
+		
+		<h1 align="center">주문목록</h1>
+		<button type="button" class="gtbutton"  id="reloadBT" onClick="window.location.reload()" style="positon:relative;float:right;right:0px;">Reload</button>
+<form method="post" name="form" id='form'>
+	{% csrf_token %}
+	<table class="bdTable">
+			<tr>		
+				<th>체크</th>			
+				<th>주문번호</th>
+				<th>상품번호</th>
+				<th>회원아이디</th>
+				<th>주문일시</th>
+				<th>배송비</th>
+				<th>주문량</th>
+			</tr>
+				<tbody class="to">
+				{% for i in olist %}
+					<tr>
+						<td><input type="checkbox" name='ckoID' id="ckoID" value='{{i.0}}'></td>
+						{% for j in i %}
+							<td data-value="{{j}}">{{j}}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+		</tbody>
+		</table>
+		<tr><center style="margin:10px 0px 0px 0px; padding:10px;">
+			{% for p in page_num %}
+		<input type="button" name="page" value="{{p}}">
+		{% endfor %}
+		</center></tr>
+		<button type="submit" class="gtbutton" id="deletBT"  value="주문삭제" onclick="javascript: form.action='deleteOrder';">주문삭제</button>
+		<button type="submit" class="gtbutton" id="correctBT" value="주문수정" onclick="javascript: form.action='getOrberUp';">주문수정</button>
+		<button type="button" class="gtbutton" id="insertBT" onclick="location.href='insertOrder' ">주문등록</button>
+</form><script>
+
+	$(function(){
+		$('.to').find('tr').hide();
+			for ( var i=0; i<10; i++) {
+			$('.to').find('tr').eq(i).show();
+		}
+		$('[name=page]').click(function(){
+			$("input:checkbox[id='ckoID']").attr('checked', false);
+			p_num = $(this).val() * 10;
+			$('.to').find('tr').hide();
+			for ( var i=p_num-10; i<p_num; i++) {
+				$('.to').find('tr').eq(i).show();
+				}
+		}) // 클릭 함수
+		$('#correctBT').click(function(){
+			var a = $("input:checkbox[id='ckoID']:checked")
+			if(a.length<1){
+				alert("수정 할 주문을 선택해주세요")
+				return false
+			}else{
+
+				return true
+			}
+		})//상품수정클릭함수
+		$('#deletBT').click(function(){
+			var a = $("input:checkbox[id='ckoID']:checked")
+			if(a.length<1){
+				alert("삭제 할 주문을 선택해주세요")
+				return false
+			}else{
+
+				return true
+			}
+		})//상품수정클릭함수
+
+	}); // 시작함수
+
+</script>
+
+</body>
+</html>

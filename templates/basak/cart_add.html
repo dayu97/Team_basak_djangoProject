@@ -1,0 +1,60 @@
+
+  <!DOCTYPE html>
+<html>
+
+{% load static %}
+{% static "" as baseUrl %}
+
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="google-translate-customization"
+	content="6f1073ba568f1202-9c8990a4b3025b3e-ga74e3ea243d3f01d-14"></meta>
+<!-- 세계 언어선택 메타 태그 -->
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<!-- <script type="text/javascript" src="./js/exam.js"></script> //자스파일 -->
+<title>장바구니 담기 성공</title>
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/cart_add.css">
+</head>
+
+
+
+
+<body>
+
+
+
+
+	<div id="addCartLayer" class="layer_wrap">
+		<div class="box add_cart_layer"
+			style="position:absolute; top:20%; left:25%; ">
+			<div class="view">
+				<h2>장바구니 담기</h2>
+				<div class="scroll_box">
+					<p class="success">
+						<strong>{{request.session.pID}}번 제품이 장바구니에 담겼습니다.</strong><br>바로 확인하시겠습니까?
+					</p>
+				</div>
+				<div class="btn_box">
+					<button class="btn_cancel" onclick="location.href='index'">
+						<span>계속쇼핑</span>
+					</button>
+					<a href='cart'>
+					<button type="button" class="btn_confirm btn_move_cart" >
+						<span>확인</span>
+					</button></a>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

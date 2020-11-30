@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+
+    
+
+<html>
+
+
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="google-translate-customization"
+	content="6f1073ba568f1202-9c8990a4b3025b3e-ga74e3ea243d3f01d-14"></meta>
+<!-- 세계 언어선택 메타 태그 -->
+
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<!-- <script type="text/javascript" src="./cart.js"></script> -->
+
+<title>장바구니</title>
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/assets/css/cart.css">
+
+<script>
+
+function checkAll(){
+    if( $("#allCheck1").is(':checked') ){
+      $("input[name=cartList]").prop("checked", true);
+    }else{
+      $("input[name=cartList]").prop("checked", false);
+    }
+}
+
+
+
+	
+	
+
+</script>
+
+</head>
+
+
+<body>
+
+	<div class="box_dashed" style="margin-left: auto; margin-right: auto;">
+		<div class="icon_img">
+			<div class="img" style="font-size:30px">
+				🛒
+			</div>
+		</div>
+		<ul>
+			<li>까까나라는 5만원 이상 구매시 무료배송을 지원해 드리고 있습니다🥰<li>
+			<li>장바구니에 담은 상품들을 한꺼번에 주문 시 묶음 배송을 하실 수 있습니다.</li>
+			<li>따로 따로 여러번 결제 시 중복 계산된 배송비는 게시판으로 문의 주시면 환불 도와드리겠습니다❣</li>
+		</ul>
+	</div>
+	<div class="sub_content">
+		<!-- //side_cont -->
+		<div class="content_box">
+			<div class="order_wrap" style="margin-left: auto; margin-right: auto;">
+				<div class="order_tit">
+					<h2>장바구니</h2>
+					<ol>
+						<li class="page_on"><span>01</span> 장바구니 <span>&nbsp;👉&nbsp;</span></li>
+						<li><span>02</span> 주문서작성/결제<span>
+						&nbsp;👉&nbsp;</span></li>
+						<li><span>03</span> 주문완료</li>
+					</ol>
+				</div>
+				<!-- //order_tit -->
+				<div class="cart_cont">
+					<form id="frmCart" name="frmCart" method="post" target="ifrmProcess">
+<!-- 						
+						<!-- 장바구니 상품리스트 시작 -->
+						<div class="cart_cont_list">
+							<div class="order_cart_tit"></div>
+							<!-- //order_cart_tit -->
+							<div class="order_table_type">
+								<table style="margin-left: auto; margin-right: auto;">
+									<colgroup>
+										<col style="width: 3%">
+										<!-- 체크박스 -->
+										<col style="width: auto">
+										<!-- 상품명/옵션 -->
+										<col style="width: 13%">
+										<!-- 수량 -->
+										<col style="width: 10%">
+										<!-- 상품금액 -->
+										<col style="width: 13%">
+										<!-- 합계금액 -->
+										<col style="width: 15%">
+										<!-- 배송비 -->
+									</colgroup>
+									<thead>
+										<tr>
+											<th>
+												<div class="form_element">
+													<input type="checkbox" id="allCheck1"
+														class="gd_select_all_goods" data-target-id="cartSno1_"
+														data-target-form="#frmCart" checked="checked" onclick="checkAll()"> <label
+														for="allCheck1" class="check_s on"></label>
+												</div>
+											</th>
+											<th>상품/옵션 정보</th>
+											<th>수량</th>
+											<th>상품금액</th>
+											<th>합계금액</th>
+											<th>배송비</th>
+
+										</tr>
+									</thead>
+							
+
+								</table>
+							</div>
+						</div>
+						<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+					</form>
+					<br/><br/><br/>
+					<div class="price_sum" style="margin-left: auto; margin-right: auto;">
+						<div class="price_sum_cont">
+							<div class="price_sum_list" >
+								<dl>
+									<dt>
+										총 <strong id="totalGoodsCnt">1</strong> 개의 상품금액
+									</dt>
+									<dd>
+										<strong id="totalGoodsPrice">${i.pPRICE }</strong>원
+									</dd>
+								</dl>
+								<span>&nbsp;➕&nbsp;</span>
+								<dl>
+									<dt>배송비</dt>
+									<dd>
+										<strong id="totalDeliveryCharge">3,000</strong>원
+									</dd>
+								</dl>
+								<span>&nbsp;▶&nbsp;</span>
+								<dl class="price_total">
+									<dt>합계</dt>
+									<dd>
+										<strong id="totalSettlePrice">${i.pPRICE }</strong>원
+										<div class="add_currency">
+											<em id="totalSettlePriceAdd"></em>
+										</div>
+									</dd>
+								</dl>
+							</div>
+							<em id="deliveryChargeText" class="tobe_mileage"></em>
+						</div>
+						<!-- //price_sum_cont -->
+					</div>
+					<!-- //price_sum -->
+				</div>
+				<!-- //cart_cont -->
+			</div>
+			<!-- //order_wrap -->
+		</div>
+		<!-- //content_box -->
+		<div class="btn_order_box">
+			<span class="btn_left_box">
+				<button type="button" class="btn_order_choice_del" onclick="deleteAction()">선택 상품 삭제</button>
+				<a href="goindex.do">
+				<button type="button" class="btn_order_choice_del">쇼핑 계속 하기</button></a>
+			</span> 
+			<span class="btn_right_box">
+				<a href="pay.do?pID=${sessionScope.cart_add}"><button type="button" class="btn_order_whole_buy" >상품 주문</button></a>
+			</span>
+		</div>
+
+	</div>
+</body>
+</html>
+

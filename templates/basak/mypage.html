@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basak signup</title>
+
+<!--********** 【 css 링크 걸기 】**********
+-->
+
+
+<link rel="stylesheet" type="text/css" href="../static/css/mypage.css" media="all" />
+
+<!--********** 【 js 링크 걸기 】********** -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="../static/js/signup.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+
+       <form class="topForm" method="post">
+
+		   <div class="topGroup" id="topGroup">
+	        	<div class="titleForm">
+	   				<p1>
+		   				<a href='basak'>
+		   				<img class="titImg" src="{{baseUrl}}/img/title.png">
+		   				</a>
+       </form>
+
+
+
+
+
+
+<form class="signupForm" action="insert_member" method="post" name="frm">
+{% csrf_token %}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Tabs Titles -->
+<!--	<h3 align=center>회원 정보 페이지</h3>-->
+
+
+    <!-- 맴버 Form -->
+
+    <div class="form-group">
+        <p1><label class="inputId"><h4>{{request.session.user_mid}}님 어서오세요!</h4><img src="" class="imgTitle"></label></p1>
+        <input type="hidden" name="mid" value="{{request.session.user_mid}}">
+       <div id="idmessage"  class= "checkMessage" style="display:none;"></div>
+
+   </div>
+
+    <div class="form-group">
+    <p2><label class="inputPassword">새로운 비밀번호 설정하기<img src="" class="imgTitle"></label></p2>
+      <input type="password" id="mpw" class="fadeIn second" name="mpw" placeholder="*******">
+       <div id="pwmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+      <div class="form-group">
+   <p2><label class="inputPasswordCheck">비밀번호 확인하기<img src="" class="imgTitle"></label></p2>
+      <input type="password" id="pwd_con" class="fadeIn third" name="pwd_con" placeholder="*******">
+       <div id="pwcmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+      <div class="form-group">
+      <p2><label class="inputName">새로운 이름 설정하기<img src="" class="inputName" ></label></p2>
+      <input type="text" id="mname" class="fadeIn third" name="mname" placeholder="Name">
+       <div id="namemessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+
+      <div class="form-group">
+      <p2><label class="inputAddr">변경된 주소 설정하기<img src="" class="inputAddr"></label></p2>
+      <input type="text" id="maddress" class="fadeIn fourth" name="maddress" placeholder="Addr">
+       <div id="addrmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+       <div class="form-group">
+       <p2><label class="inputMobile">변경된 핸드폰번호 설정하기</label></p2>
+      <input type="text" id="mphone" class="fadeIn fourth" name="mphone" placeholder="Phone">
+       <div id="telmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+        <input type="button" class="join-submit" id="join" value="수정하기" onclick="mypage_update()">
+        <input type="button" class="join-close" value="탈퇴하기" onclick="mypage_delete()">
+
+  </div>
+</div>
+<script>
+
+    function mypage_delete(){
+        alert('탈퇴처리 되었습니다!')
+        document.frm.action="mypage_delete";
+        document.frm.submit();
+    }
+    function mypage_update(){
+        document.frm.action="mypage_update";
+        document.frm.submit();
+    }
+
+
+
+</script>
+
+</form>
+</body>
+</html>

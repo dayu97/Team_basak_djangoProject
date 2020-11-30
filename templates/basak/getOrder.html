@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>order</title>
+
+
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/getOrder.css" media="all" />
+
+
+</head>
+<body>	
+		<h1 align="center">주문 수정</h1>		
+		<hr>
+		<form action="updateOrder" method='post' enctype="multipart/form-data">
+			{% csrf_token %}
+			<input name="oID" type="hidden" name="oID" id="oID" value="{{order.0}}" />
+			<table border="1" cellpadding="0" cellspacing="0">
+				<tr>
+					<td bgcolor="orange"><h2>상품번호</h2></td>
+					<td align="left"><input type="text" size="10" name='pID' value="{{order.1}}"/></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange"><h2>회원아이디</h2></td>
+					<td align="left"><input type="text" name="mID" value="{{order.2}}"/></td>
+				</tr>
+				<tr>
+					<td bgcolor="orange"><h2>배달비</h2></td>
+					<td align="left">
+						<select name="oDELIVERYFEE" id="oDELIVERYFEE" >
+							<option value="2500">2500</option>
+							<option value="0">0</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td bgcolor="orange"><h2>주문수량</h2></td>
+					<td align="left"><input type="text" name='oAMOUNT' value="{{order.5}}"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+					<input type="submit" class="gobutton" value="주문 수정" /></td>
+				</tr>
+			</table>
+		</form>
+
+		<hr>
+	
+		<button type="button" class="gobutton" onclick="location.href='getOrderlist' ">주문목록</button>
+			
+</body>
+</html>

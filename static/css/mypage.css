@@ -1,0 +1,424 @@
+/* karla-regular - latin */
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/karla-v13-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Karla'), local('Karla-Regular'),
+       url('../fonts/karla-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/karla-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/karla-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/karla-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/karla-v13-latin-regular.svg#Karla') format('svg'); /* Legacy iOS */
+}
+/* 웹폰트 import */
+
+
+
+*{  margin:0;
+	padding: 0;
+	font-family: 'Karla';
+}@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+
+ul{list-style:none;}
+
+
+
+/* Register 부분 */
+
+h3{
+	color:#756e74;
+	font-family: 'Karla';
+	margin-top: 50px;
+	padding: 10px;
+	font-size: 25px;
+}
+h4{
+	color:#756e74;
+	font-family: 'Karla';
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 25px;
+}
+
+
+
+/* 처음 화면의 전체 창 */
+html {
+  background-color: white;
+}
+
+
+/* 전체창 2 */
+body {
+ font-family: 'Karla';
+  height: 100vh;
+}
+
+/* 내려오면서 바뀌는 전체 창 */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  background-color: #95d0ed;
+
+}
+
+
+/* 로그인 창 박스 부분 */
+
+#formContent {
+  position: relative;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 30px 20px 30px 30px;
+  background: white;
+  /*
+  width: 90%;
+  height: 50%;
+  max-width: 450px;
+  max-height: 450px;
+  */
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+
+#formFooter {
+  background-color: red;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+
+#agrmessage{
+
+	position: relative;
+	top: 10px;
+	font-family: 'Karla';
+	color:#756e74;
+	font-size: 15px;
+
+
+}
+
+
+
+/*  id, pasword..등 타이틀 부분 */
+.form-group label{
+
+	color:#756e74;
+	font-family: 'Karla';
+	padding: 20px;
+	font-size: 20px;
+	position: relative;
+    top: -5px;
+	text-align: center;
+}
+
+.checkMessage{
+	position: relative;
+	top: -20px;
+	font-family: 'Karla';
+	color:#756e74;
+	font-size: 15px;
+
+}
+
+
+/* 버튼 안의 글씨 및 효과 */
+
+input[type=button], input[type=submit], input[type=reset]  {
+
+  position: relative;
+  top: 20px;
+  background-color: #e8b7b7;
+  border: none;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 15px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.2);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 30px 30px 30px 30px;
+   margin: 5px 20px 30px 20px;
+
+
+/*  애니부분 */
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+
+
+/* 마우스 가져다댔을시 색깔 변화  */
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+
+  background-color: #a65656;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+
+  background-color: #a65656;
+}
+
+
+input[type=button]:member_login, input[type=submit]:member_login, input[type=reset]:member_login  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+
+}
+
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+
+/* 아이디 패스워드 쓰는 부분 */
+
+input[type=text] {
+
+  position : relative;
+  top: -10px;
+  right: -20px;
+  background-color: white;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+  width: 300px;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+
+/* 비밀번호 쓰는 부분 */
+
+input[type=password] {
+
+  position : relative;
+  top: -10px;
+  right: -28px;
+  background-color: white;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+  width: 300px;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+#mphone {
+
+  position : relative;
+  top: -10px;
+  right: 3px;
+  background-color: white;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+  width: 300px;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+#mpw {
+
+  position : relative;
+  top: -10px;
+  right: 3px;
+  background-color: white;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+  width: 300px;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* 아이디 쓰는 부분 들어갔을시 */
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+
+
+
+/* ANIMATIONS */
+
+
+/* 창 내려오는 애니메이션 */
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+
+
+/* 페이드 인 애니부분 */
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:0.5s;
+  -moz-animation-duration:0.5s;
+  animation-duration:0.5s;
+}
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+}
+
+#icon {
+  width:60%;
+}
+
+* {
+  box-sizing: border-box;
+}

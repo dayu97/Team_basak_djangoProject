@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="google-translate-customization" content="6f1073ba568f1202-9c8990a4b3025b3e-ga74e3ea243d3f01d-14"></meta>
+<!-- 세계 언어선택 메타 태그 -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+<!-- 우편번호 API -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- JS -->
+<script type="text/javascript" src="/static/js/pay.js"></script>
+<script type="text/javascript" src="/static/js/product_de.js"></script>
+
+<title>주문서작성</title>
+<link rel="stylesheet" type="text/css" href="/static/css/pay.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+</head>
+
+
+<body style="margin: 0 auto; ">
+
+
+	<div class="contents">
+
+
+		<div class="titleArea">
+			<h2>주문서작성</h2>
+		</div>
+
+		<form id="frm_order_act" name="frm_order_act" target="_self" enctype="multipart/form-data" action="pay_suc?cart_id={{cart_id}}" method="post">
+        {% csrf_token %}
+			<input id="sEleID" name="sEleID"
+				value="total_price||ophone1_1||ophone1_2||ophone1_3
+				||ophone2_1||ophone2_2||ophone2_3||ophone1_ex1||ophone1_ex2||ophone2_ex1
+				||ophone2_ex2||basket_type||oname||oname2||english_oname||fname||fname2||paymethod
+				||rname||rzipcode1||rzipcode2||raddr1||raddr2||rphone1_1||rphone1_2||rphone1_3||rphone2_1||rphone2_2||rphone2_3
+				||omessage||omessage_select||ozipcode1||ozipcode2||oaddr1||oaddr2||oemail||oemail1||oemail2
+				"
+				type="hidden">
+			<div class="xans-element- xans-order xans-order-form xans-record-">
+				<div class="orderListArea ">
+					<div class="title">
+						<h3>배송상품 주문내역</h3>
+					</div>
+
+
+					<div class="ec-base-table typeList gBorder ">
+						<table border="1" summary="">
+							<colgroup>
+								<col style="width: 27px" class="displaynone">
+								<col style="width: 92px">
+								<col style="width: auto">
+								<col style="width: 98px">
+								<col style="width: 75px">
+								<col style="width: 98px">
+								<col style="width: 98px">
+								<col style="width: 98px">
+							</colgroup>
+							<thead>
+								<tr>
+
+									<th scope="col">이미지</th>
+									<th scope="col">상품정보</th>
+									<th scope="col">판매가</th>
+									<th scope="col">수량</th>
+									<th scope="col">배송구분</th>
+									<th scope="col">배송비</th>
+									<th scope="col">합계</th>
+								</tr>
+							</thead>
+							<tfoot class="right">
+							</tfoot>
+							<tbody class="xans-element- xans-order xans-order-normallist center">
+							{% for e in add %}
+<!--							<c:forEach items="${CartList}" var="cartList">-->
+								<tr class="xans-record-">
+
+
+									<td class="thumb"><a href=#> <img src="/static/img/product_out_{{e.0}}.png" alt=""></a></td>
+									<td class="left gClearLine"><strong class="name"><a href=# class="ec-product-name">{{e.3}}</a></strong>
+									<td class="right">
+										<div id="product_sale_price_div0" class="displaynone">{{e.1}}원
+											<p class="displaynone"></p>
+										</div>
+									</td>
+									<td>{{e.0}}개
+
+									</td>
+									<td><div class="txtInfo">기본배송<br></div></td>
+									<td rowspan="1" class="">[무료]</td>
+									<td class="right"><strong><span id="product_total_price_front0">{{e.2}}</span>원</strong>
+										<div class="displaynone"></div></td>
+									<input type="hidden" id ="cartlist{{forloop.counter0}}" value="{{e.5}}">
+								</tr>
+
+							{% endfor %}
+							</tbody>
+
+						</table>
+					</div>
+
+					<div class="ec-base-table typeList gBorder displaynone"></div>
+				</div>
+
+
+				<div class="orderArea  ec-shop-ordererForm">
+					<div class="title">
+						<h3>주문 정보</h3>
+						<p class="required">
+							<img src="/static/img/asterisk.png" alt="필수"> 필수입력사항
+						</p>
+					</div>
+					<div class="ec-base-table typeWrite">
+						<table border="1" summary="">
+							<colgroup>
+								<col style="width: 139px;">
+								<col style="width: auto;">
+							</colgroup>
+							<!-- 국내 쇼핑몰 -->
+							<tbody class="address_form">
+								<tr>
+									<th scope="row">주문하시는 분 <img src="/static/img/asterisk.png" alt="수"></th>
+									<td><input id="oname" name="oname" fw-filter="isFill" fw-label="주문자 성명" fw-msg="" class="inputTypeText" placeholder="" size="15" value="" type="text"></td>
+								</tr>
+								<tr class="address">
+									<th scope="row">주소<img src="/static/img/asterisk.png" alt="필수"></th>
+									<td>
+										<input type="text" name="zipcode" id="zipcode" class="zipcode" placeholder="우편번호" readonly>
+										<input type="button" onclick="execPostCode()" id="zipcode_btn" value="우편번호 찾기"><br>
+										<input type="text" id="addr1" name="addr1" class="addr1" size="40" placeholder="주소"><br>
+										<input type="text" id="addr2" name="addr2" class="addr2" size="40" placeholder="상세주소">
+										<br /></td>
+								</tr>
+								<tr class="phone">
+									<th scope="row">휴대전화 <span class=""><img
+											src="/static/img/asterisk.png" alt="필수"></span>
+									</th>
+									<td><select id="ophone2_1" name="ophone2_[]"
+										fw-filter="isNumber&amp;isFill" fw-label="주문자 핸드폰번호"
+										fw-alone="N" fw-msg="">
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="018">018</option>
+											<option value="019">019</option>
+									</select>-<input id="ophone2_2" name="ophone2_[]" maxlength="4"
+										fw-filter="isNumber&amp;isFill" fw-label="주문자 핸드폰번호"
+										fw-alone="N" fw-msg="" size="4" value="" type="text">-<input
+										id="ophone2_3" name="ophone2_[]" maxlength="4"
+										fw-filter="isNumber&amp;isFill" fw-label="주문자 핸드폰번호"
+										fw-alone="N" fw-msg="" size="4" value="" type="text"></td>
+								</tr>
+							</tbody>
+							<tbody class="email ec-orderform-emailRow">
+								<tr>
+									<th scope="row">이메일 <img src="/static/img/asterisk.png" alt="필수"></th>
+									<td><input id="oemail1" name="oemail1" fw-filter="isFill"
+										fw-label="주문자 이메일" fw-alone="N" fw-msg="" class="mailId"
+										value="" type="text">@
+										<select id="oemail2"
+										fw-filter="isFill" fw-label="주문자 이메일" fw-alone="N" fw-msg="">
+											<option value="" selected="selected">- 이메일 선택 -</option>
+											<option value="naver.com">naver.com</option>
+											<option value="daum.net">daum.net</option>
+											<option value="nate.com">nate.com</option>
+											<option value="hotmail.com">hotmail.com</option>
+											<option value="yahoo.com">yahoo.com</option>
+											<option value="empas.com">empas.com</option>
+											<option value="korea.com">korea.com</option>
+											<option value="dreamwiz.com">dreamwiz.com</option>
+											<option value="gmail.com">gmail.com</option>
+											<option value="etc">직접입력</option>
+									</select></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="orderArea">
+					<div class="title">
+						<h3>배송 정보</h3>
+						<p class="required">
+							<img src="/static/img/asterisk.png" alt="필수"> 필수입력사항
+						</p>
+					</div>
+					<div class="ec-base-table typeWrite">
+						<table border="1" summary="">
+							<colgroup>
+								<col style="width: 139px;">
+								<col style="width: auto;">
+							</colgroup>
+							<tbody class="">
+								<tr class="">
+									<th scope="row">배송지 선택</th>
+									<td>
+										<div class="address">
+											<input id="sameaddr0" name="sameaddr" fw-filter="" fw-label="1" fw-msg="" value="T" type="radio" >
+											<label for="sameaddr0">주문자 정보와 동일</label>
+											<input id="sameaddr1" name="sameaddr" fw-filter="" fw-label="1" fw-msg="" value="F" type="radio"><labe택l for="sameaddr1">
+											새로운 배송지</labe택l>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">받으시는 분 <img src="/static/img/asterisk.png"
+										alt="필수"></th>
+									<td><input id="rname" name="rname" fw-filter="isFill"
+										fw-label="수취자 성명" fw-msg="" class="inputTypeText"
+										placeholder="" size="15" value="" type="text"></td>
+								</tr>
+								<tr class="rec_address">
+									<th scope="row">주소지<img src="/static/img/asterisk.png" alt="필수"></th>
+									<td>
+										<input type="text" name="rec_zipcode" id="rec_zipcode" class="rec_zipcode" placeholder="우편번호" readonly>
+										<input type="button" onclick="rec_execPostCode()" id="rec_zipcode_btn" value="우편번호 찾기"><br>
+										<input type="text" id="rec_addr1" name="rec_addr1" class="rec_addr1" size="40" placeholder="주소"><br>
+										<input type="text" id="rec_addr2" name="rec_addr2" class="rec_addr2" size="40" placeholder="상세주소">
+										<br /></td>
+								</tr>
+								<tr class="phone">
+									<th scope="row">휴대전화 <span class=""><img
+											src="/static/img/asterisk.png" alt="필수"></span>
+									</th>
+									<td><select id="rphone2_1" name="rphone2_[]"
+										fw-filter="isNumber&amp;isFill" fw-label="수취자 핸드폰번호"
+										fw-alone="N" fw-msg="">
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="018">018</option>
+											<option value="019">019</option>
+									</select>-<input id="rphone2_2" name="rphone2_[]" maxlength="4"
+										fw-filter="isNumber&amp;isFill" fw-label="수취자 핸드폰번호"
+										fw-alone="N" fw-msg="" size="4" value="" type="text">-<input
+										id="rphone2_3" name="rphone2_[]" maxlength="4"
+										fw-filter="isNumber&amp;isFill" fw-label="수취자 핸드폰번호"
+										fw-alone="N" fw-msg="" size="4" value="" type="text"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="title">
+					<h3>결제 예정 금액</h3>
+				</div>
+				<div class="totalArea">
+					<div class="total">
+						<table border="1" summary="">
+							<colgroup>
+								<col style="width: 33.33%">
+								<col style="width: 33.33%" class="">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col"><strong>총 주문 금액</strong></th>
+									<th scope="col" class=""><strong>총 </strong><strong
+										id="total_addsale_text" class="">할인</strong><strong
+										id="plus_mark" class=""> + </strong><strong
+										id="total_addpay_text" class="">부가결제</strong><strong>
+											금액</strong></th>
+									<th scope="col"><strong>총 결제예정 금액</strong></th>
+								</tr>
+							</thead>
+							<tbody class="center">
+
+								<tr>
+									<td class="price"><div class="box txt16">
+											<strong><span id="total_order_price_view"
+												class="txt23"></span>원</strong> <span class="displaynone"><span
+												id="total_order_price_ref_view"></span></span>
+										</div></td>
+									<td class="option "><div class="box txt16">
+											<strong>-</strong> <strong><span
+												id="total_sale_price_view" class="txt16"></span>원</strong> <span
+												class="displaynone"><span
+												id="total_sale_price_ref_view"></span></span>
+										</div></td>
+									<td><div class="box txtEm txt16">
+											<strong>=</strong> <strong><span
+												id="total_order_sale_price_view" class="txt23"></span>원</strong>
+											<span class="displaynone"><span
+												id="total_order_sale_price_ref_view"></span></span>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="total">
+					<h4>
+						<span>최종결제 금액</span>
+					</h4>
+					<p class="price">
+						<span></span><input id="total_price" name="total_price"
+							fw-filter="isFill" fw-label="결제금액" fw-msg=""
+							class="inputTypeText" placeholder=""
+							style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
+							size="10" readonly="1" value="{{sums.0}}" type="text"><span class="txt23"></span>원
+					</p>
+					<p class="paymentAgree" id="chk_purchase_agreement">
+						<input id="chk_purchase" name="chk_purchase" fw-filter=""
+							fw-label="구매진행 동의" fw-msg="" value="T" type="checkbox" class ="check" id="fruit"><label for="chk_purchase_agreement0">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
+					</p>
+						<div class="ec-base-button gColumn">
+							<button type="button" id="btn_payment" class="btnSubmit sizeL" onclick="checkForm()">결제하기</button>
+						</div>
+				</div>
+			</div>
+		</form>
+	</div>
+<script>
+
+	$(document).ready(function(){
+		totPrice = 0;
+		$('[id^=product_total_price_front]').each(function(){
+			totPrice = totPrice + parseInt($(this).text().split("원")[0])
+		})
+		$('.txt23').text(totPrice)
+	})
+
+</script>
+
+
+<!--<script>-->
+
+<!--	$('.button').click(function(){-->
+<!--		if(confirm("결제하시겠어요") == true){-->
+<!--		var cart_id = "";-->
+<!--		$("[id^=cartlist]").each(function()-->
+<!--		{-->
+<!--			cart_id = cart_id + ',' + $(this).val()-->
+<!--		})-->
+<!--		    cart_id = cart_id.substr(1,)-->
+<!--			$.ajax({-->
+<!--				type : 'GET',-->
+<!--				url : "pay_suc?cart_id=" + cart_id,-->
+<!--				success : function(){-->
+<!--					alert(cart_id)-->
+<!--					alert("선택 항목이 삭제되었습니다!!")-->
+
+<!--					location.href="pay_suc";-->
+<!--				},-->
+<!--				error : function(){-->
+<!--					alert("에러");-->
+<!--				}-->
+<!--			});-->
+<!--					}else{-->
+<!--			return;-->
+<!--		}-->
+<!--		document.frm_order_act.submit();-->
+<!--	});-->
+
+<!--</script>-->
+
+</body>
+</html>
+

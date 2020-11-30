@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>맴버 등록</title>
+
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/insertMember.css" media="all" />
+
+</head>
+
+<body>
+		<h1 align="center" >회원정보 등록</h1>
+		<hr>
+
+		<form action="saveMember" method='post' enctype="multipart/form-data">
+			 {% csrf_token%}
+			<table>
+				<tr>
+					<td><h2>아이디</h2></td>
+					<td><input type="text" size="10" name='mID'/></td>
+				</tr>
+				<tr>
+					<td ><h2>비밀번호</h2></td>
+					<td><input type="text" size="10" name='mPW'></td>
+				</tr>
+				<tr>
+					<td><h2>이름</h2></td>
+					<td ><input type="text" name='mNAME'/></td>
+				</tr>
+				<tr>
+					<td><h2>주소</h2></td>
+					<td><input type="text" name='mADDRESS'/></td>
+				</tr>
+				<tr>
+					<td><h2>핸드폰번호</h2></td>
+					<td ><input type="text" name='mPHONE'/></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" align="center">
+					<input type="submit" class="gmbutton" value="회원 등록" /></td>
+				</tr>
+
+			</table>
+		</form>
+		<hr>
+
+		<button type="button" class="gmbutton" onclick="location.href='getMemberList' ">회원 목록</button>
+</body>
+</html>

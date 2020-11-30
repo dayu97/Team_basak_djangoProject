@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/getProductList.css" media="all" />
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="/scripts.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>상품 목록</title>
+</head>
+
+<body>
+
+<!-- 		<h2>현재 getProudctList페이지입니다.</h2> -->
+		
+		<h1 align="center">상품목록</h1>
+
+		<button type="button" class="gtbutton"  id="reloadBT" onClick="window.location.reload()" style="positon:relative;float:right;right:0px;">Reload</button>
+		
+<form method="post" name="form" id='form'>
+	{% csrf_token %}
+	<table border="1" class="bdTable">
+			<tr>		
+				<th >체크</th>
+				<th>상품번호</th>
+				<th>상품타입</th>
+				<th>상품이름</th>
+				<th>상품가격</th>
+				<th>상품수량</th>
+				<th>상품메인이미지</th>
+				</tr>
+				<tbody class="to">
+				{% for i in plist %}
+					<tr>
+						<td><input type="checkbox" name='chkID' id="chkID" value='{{i.0}}'></td>
+						{% for j in i %}
+							{% if not forloop.last %}
+								<td>{{j}}</td>
+							{% else %}
+								<td><img src="{{baseUrl}}/img/{{j}}" style="width:100px;"></td>
+							{% endif %}
+						{% endfor %}
+					</tr>
+
+				{% endfor %}
+		</tbody>
+		</table>
+		<tr><center style="margin:10px 0px 0px 0px; padding:10px;">
+			{% for p in page_num %}
+		<input type="button" name="page" value="{{p}}">
+		{% endfor %}
+		</center></tr>
+		<button type="submit" class="gtbutton" id="deletBT" value="상품삭제" onclick="javascript: form.action='deleteProduct';">상품삭제</button>
+
+		<button type="submit" class="gtbutton" id="correctBT" value="상품수정" onclick="javascript: form.action='get_Product';">상품수정</button>
+
+		<button type="button" class="gtbutton" id="insertBT" onclick="location.href='insertProduct' ">상품등록</button>
+
+</form><script>
+
+	$(function(){
+		$('.to').find('tr').hide();
+			for ( var i=0; i<10; i++) {
+			$('.to').find('tr').eq(i).show();
+		}
+		$('[name=page]').click(function(){
+			$("input:checkbox[id='chkID']").attr('checked', false);
+			p_num = $(this).val() * 10;
+			$('.to').find('tr').hide();
+			for ( var i=p_num-10; i<p_num; i++) {
+				$('.to').find('tr').eq(i).show();
+				}
+		}) // 클릭 함수
+		$('#correctBT').click(function(){
+			var a = $("input:checkbox[id='chkID']:checked")
+			if(a.length<1){
+				alert("수정 할 상품을 선택해주세요")
+				return false
+			}else{
+				return true
+			}
+		})//상품수정클릭함수
+
+		$('#deletBT').click(function(){
+			var a = $("input:checkbox[id='chkID']:checked")
+			if(a.length<1){
+				alert("삭제 할 상품을 선택해주세요")
+				return false
+			}else{
+				return true
+			}
+		})
+	}); // 시작함수
+
+</script>
+</body>
+</html>

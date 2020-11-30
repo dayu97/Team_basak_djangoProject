@@ -1,0 +1,36 @@
+
+	<style>
+		.logmsg {
+		position: relative;
+		float: right;
+		right: 760px;
+		top: 57px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 70px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+					{% if 'user_mid' in request.session %}
+					<div class="logmsg">{{request.session.user_mname}}님 반갑습니다.</div>
+	   				<a href="mypage?mid={{request.session.user_mid}}"><img class="mypage" src="{{baseUrl}}/img/mypage.png"></a>
+					<a href="logout"><img class="logImg" src="{{baseUrl}}/img/logout.png"></a>
+					{%  else %}
+		   			<a href='login'><img class="logImg" src="{{baseUrl}}/img/login.png"></a>
+					{% endif %}
+

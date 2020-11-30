@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+
+
+
+<!--********** 【 css 링크 걸기 】**********  -->
+ 
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/admin_index.css" media="all" />
+
+
+
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="/scripts.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="{{baseUrl}}/js/admin_index.js" type="text/javascript" charset="utf-8"></script>
+
+ 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Admin Main Page</title>
+	<style>
+		.logmsg {
+		position: relative;
+		float: right;
+		right: 256px;
+		top: 57px;
+		width: auto; height: auto;
+   		max-width: 300px;
+    	max-height: 70px;
+    	visibility:none;
+    	font-size:20px;
+ 		font-family: 'Karla';
+}
+
+	</style>
+
+</head>
+<body>
+
+   <form class="mainPage">
+
+   
+   <div class="mainForm" id="mainForm" >        
+   
+  <!-----------------    【  top  】 -------------------->
+    
+       <form class="topForm" method="post"> 
+       
+		   <div class="topGroup" id="topGroup">	
+	        	<div class="titleForm">
+	   				<p1>
+
+		   				<a href="basak">
+		   				<img class="titImg" src="{{baseUrl}}/img/title.png">
+		   				</a>	       		
+	   	</form>
+		   			
+					{% if 'user_mid' in request.session %}
+					<div class="logmsg">{{request.session.user_mname}}님 반갑습니다.</div>
+					<a href="logout"><img class="logImg" src="{{baseUrl}}/img/logout.png"></a>
+					{%  else %}
+		   			<a href='login'><img class="logImg" src="{{baseUrl}}/img/login.png"></a>
+					{% endif %}
+
+		   						   				
+	        		</p1>  
+	         	</div>  <!--   end of  titleForm -->
+	     
+      	 </div>  <!--  end of  topGroup -->
+	   </form> <!-- end of  topForm -->
+	   			
+	 		
+
+    <form class="bodyForm"> 
+       	 <table class="bodyTB">
+		   <div class="bodyGroup" id="bodyGroup">
+			 
+			<a href="#" class="pageup">
+			<h3><p class="productMG">상품관리</p></h3>
+			</a><br>
+			
+			<a href="#" class="pageup">
+			<h3><p class="orderMG">주문관리</p></h3>
+			</a></br> 
+			
+			
+			<a href="#" class="pageup">
+			<h3><p  class="memberMG">회원관리</p></h3>
+			</a>
+			</br> 
+
+	
+		    </div>     <!--   end of  bodyGroup -->
+	   		  
+	   		</table>
+		    
+	    </form>    <!-- end of  bodyForm -->
+	    
+	    
+  
+	 <!-----------------    【  right 】 -------------------->
+
+       <form>
+            {% for pie,pie_val in piechart%}
+            <input type="hidden" name="pie" class="pie" value="{{pie}}">
+            <input type="hidden" name="pie_val" class="pie_val" value="{{pie_val}}">
+            {% endfor %}
+       	<div id="rightGroup" class="off">
+  
+       <!--  -------------------왼쪽 통계 자료 -------------------         -->	       	
+       	  <div id="piechart">
+			  <script src="https://d3js.org/d3.v3.min.js"></script>
+			  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+			  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+			  <script>
+					$(function(){
+						var chartData=[];
+<!--						alert($('input[name=pie]').length)-->
+						for(var i = 0 ; i<4 ; i++){
+<!--						for(var i = 0 ; i<$('input[name=pie]').length ; i++){-->
+							chartData.push([$('input[name=pie]').eq(i).val(),$('input[name=pie_val]').eq(i).val()]);
+
+						}
+
+<!--						alert('pie[0]'+$('input[name=pie]').eq(0).val())-->
+<!--						alert('pie[1]'+$('input[name=pie]').eq(1).val())-->
+<!--						alert('pie[2]'+$('input[name=pie]').eq(2).val())-->
+<!--						alert('pie_val[0]'+$('input[name=pie_val]').eq(0).val())-->
+<!--						alert('pie_val[1]'+$('input[name=pie_val]').eq(1).val())-->
+<!--						alert('pie_val[2]'+$('input[name=pie_val]').eq(2).val())-->
+<!--						alert(chartData)-->
+
+						var chart = c3.generate({
+						bindto:'#piechart',
+							data: {
+								columns: chartData,
+								type : 'pie',
+							}
+						});//차트함수
+					});//시작함수
+			  </script>
+
+				</div>
+				
+<h1>환영합니다!</h1>
+	<!--  -------------------오른쪽 통계 자료 -------------------         -->			
+			 <div id="curve_chart">
+				<script type="text/javascript">
+
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+
+				function drawChart() {
+				  var data = google.visualization.arrayToDataTable([
+				    ['quarter', 'Sales', 'Expenses'],
+				    ['1',  1000,      400],
+				    ['2',  1170,      460],
+				    ['3',  660,       1120],
+				    ['4',  1030,      540]
+				  ]);
+
+				  var options = {
+				    title: '분기별 수익',
+				    curveType: 'function',
+				    legend: { position: 'bottom' }
+				  };
+
+				  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+				  chart.draw(data, options);
+				}
+
+
+				</script>	
+       	  </div>
+
+		   		<iframe class="rightPage" src="" width="100%" height="100%" frameBorder="0"> 
+		   		</iframe >	  
+	 	 </div>
+	  </form>	
+	    
+</div>   <!--   end of  mainForm -->
+</form>  <!--end of  mainPage -->
+
+
+</body>
+</html>

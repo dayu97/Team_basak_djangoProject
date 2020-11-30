@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basak login</title>
+
+
+<!--********** 【 css 링크 걸기 】**********  -->
+
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/login_ok.css" media="all" />
+
+
+<!--********** 【 글씨체 수입 】**********  -->
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<!--********** 【 js 링크 걸기 】********** -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="{{baseUrl}}/js/login.js" type="text/javascript" charset="utf-8"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<script language="JavaScript">
+
+function popup(){
+ pop=window.open('index.do')
+ pop.focus();
+}
+tid=setTimeout(popup,3000); //5천밀리초(5초)후에 popup함수실행
+</script> 
+
+</head>
+<body > 
+
+	
+<div class="wrapper fadeInDown">
+  
+      <div id="formContent">
+      
+     <img class="iconImg" src="{{baseUrl}}/img/icon1.png"><br/>
+     
+     		  <h3>   관리자 로그인 성공! </h3><br/>
+			  
+			  
+			  
+			<h2> 【 <d>  ${sessionScope.login2} </d>  】  님, 로그인 되셨습니다.<h2><br/>
+			
+			  <h2> 3초후 메인으로...!! </h2>
+			  
+ 
+  </div>
+ </div>
+
+
+</body>
+</html>

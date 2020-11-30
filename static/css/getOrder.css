@@ -1,0 +1,253 @@
+/* karla-regular - latin */
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/karla-v13-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Karla'), local('Karla-Regular'),
+       url('../fonts/karla-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/karla-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/karla-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/karla-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/karla-v13-latin-regular.svg#Karla') format('svg'); /* Legacy iOS */
+}
+
+/* 글씨체 이름 :   Karla,sans-serif   */
+
+/* 웹폰트 import */
+
+
+
+body{	  
+	 
+	 margin: 0px;
+    padding: 50px;
+    font-family: 'Karla'; 
+	
+}
+
+ul{
+   list-style:none;
+   }
+   
+
+*{  margin:0; 
+	padding: 0; 
+	font-family: 'Karla';
+}
+  
+
+/* -------- 【body】 --------   */
+
+
+
+.bdTable{
+	align-items: center;
+	padding: 10px;
+	border : 1px;
+ 	border : dashed;
+ 	border : #e3d1d6;
+	
+}
+
+
+/* href 밑줄 지우는 부분 */ 
+a { 
+
+	text-decoration:none 
+	
+}
+
+
+/* 폰트 부분 */ 
+
+h1{
+	
+	font-family: 'Karla'; 
+	font-size: 25px;
+	
+}
+
+
+h2{
+	
+	font-family: 'Karla'; 
+	font-size: 17px;
+	color: #b55e70;	
+}
+
+h3{
+	
+	font-family: 'Karla'; 
+	font-size: 17px;
+	color: #b55e70;
+	
+}
+
+d{
+	font-family: 'Karla'; 
+	font-size: 20px;
+	color: #b55e70;
+	
+	
+}
+
+
+	
+	
+
+/* 전체 버튼 부분 */ 
+	
+.gobutton{
+		position: relative;
+	
+	  font-family: 'Karla'; 
+	  background-color: #d67889;
+	  border: none;
+	  color: white;
+	  padding: 10px 15px;
+	  text-align: center;
+	  font-size: 15px;
+	  margin: 4px 2px;
+	  opacity: 0.6;
+	  transition: 0.3s;
+	  display: inline-block;
+	  text-decoration: none;
+	  cursor: pointer;
+	
+	
+}	
+
+
+
+
+
+/*   마우스 가져다댔을때 색변화 */ 
+
+.gobutton:hover {opacity: 1}
+
+
+/*   마우스 가져다댔을때 색변화 */ 
+
+.gobutton:hover {opacity: 1}
+
+
+
+
+#deletBT{
+	
+	positon: relative;
+	float:left;
+
+}
+
+
+
+
+
+
+/*  테이블 전체 부분 */ 
+
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+    margin: auto;
+	text-align: center;
+  }
+
+
+
+
+td{
+	text-align: center;
+	positon: relative;
+	float:
+	left: 20%;
+	border-bottom: 1px solid #444444;
+	border-right: 0px;
+	border-left:0px;
+    padding: 10px;
+    background-color: #fcf6f5;
+	
+}
+
+
+
+/*  input 박스 모양 */ 
+
+
+ input[type='text']{
+ 	width: 80%;
+    padding: 15px;	
+   border: 0px;
+   border-radius: 10px;
+   border-bottom: 1px solid #444444;
+   background-color: #fffdfc;
+   font-size: 15px;
+   text-align: center;
+   font-family: 'Karla'; 
+  
+}
+
+input[type='text']:hover {
+	
+	background-color: #d4abb7;
+	
+	}
+
+
+
+
+
+
+/*  라디오 버튼 */
+
+ input[type='radio']:after {
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d4abb7;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 10px;
+        height: 10px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #872f49;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+
+
+
+/*  셀렉트 박스 부분 */ 
+
+select {
+	width: 80%;
+	height: 32px;
+  margin-bottom: 1em;
+  padding: .20em;
+  border: 0;
+  border-bottom: 1.5px solid currentcolor; 
+  font-weight: bold;
+  letter-spacing: .15em;
+  border-radius: 0;
+  &:focus, &:active {
+    outline: 0;
+    border-bottom-color: #872f49;
+  }
+  

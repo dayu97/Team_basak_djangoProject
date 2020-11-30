@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}css/getMemberList.css" media="all" />
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="/scripts.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+</script>
+<meta charset="UTF-8">
+<title>Member</title>
+</head>
+<body>
+
+		<h1 align="center">회원목록</h1>
+		<button type="button" class="gmBT" id="reloadBT" onClick="window.location.reload()" style="positon:relative;float:right;right:0px;">Reload</button>
+		<form method="post" name="form" id='form' >
+	{%csrf_token%}
+	<table>
+
+			<tr>
+				<th bgcolor="orange" width="50">체크</th>
+				<th bgcolor="orange" width="100">아이디</th>
+				<th bgcolor="orange" width="200">비밀번호</th>
+				<th bgcolor="orange" width="150">이름</th>
+				<th bgcolor="orange" width="150">주소</th>
+				<th bgcolor="orange" width="150">전화번호</th>
+				<th bgcolor="orange" width="200">가입날짜</th>
+			</tr>
+
+				 {% for member in items %}
+					<tr>
+						<td><input type="checkbox" name='mID' id="mID" value='{{member.0}}'></td>
+						{% for j in member %}
+								<td>{{j}}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+
+		</table>
+		<input type="button" class="gmBT" id="deleteBT" value="회원삭제" onclick="del()">
+		<button type="button" class="gmBT" id="correctBT" value="주문수정" onclick="show_reslt()">회원수정</button>
+		<button type="button" class="gmBT" id="insertBT" onclick="location.href='insertMember' ">회원등록</button>
+</form>
+
+		<script>
+function del(){
+ 		var a = $("input:checkbox[id='mID']:checked")
+		if(a.length<1){
+			alert("삭제 할 회원을 선택해주세요")
+			return false
+		}else{
+			document.form.action="deleteMember";
+			document.form.submit();
+		}
+    }
+ function show_reslt(){
+ 			var a = $("input:checkbox[id='mID']:checked")
+			if(a.length<1){
+				alert("수정 할 회원을 선택해주세요")
+				return false
+			}else{
+				ia=$('[name=mID]').filter(':checked').val()
+				location.href="getMember?mID="+ia;
+				return true
+			}
+    }
+
+
+
+    </script>
+</body>
+</html>

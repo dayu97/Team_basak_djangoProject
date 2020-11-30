@@ -1,0 +1,213 @@
+/* karla-regular - latin */
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/karla-v13-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Karla'), local('Karla-Regular'),
+       url('../fonts/karla-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/karla-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/karla-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/karla-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/karla-v13-latin-regular.svg#Karla') format('svg'); /* Legacy iOS */
+}
+
+/* 글씨체 이름 :   Karla,sans-serif   */
+
+/* 웹폰트 import */
+
+
+body{	  
+	 
+	 margin: 0px;
+    padding: 0px;
+	
+}
+
+ul{
+   list-style:none;
+   }
+   
+  
+   
+/* -------- 【top 】 --------   */
+
+
+
+/* 탑 전체 영역  */
+
+#topGroup { 
+		
+		position: relative;
+		border-color: transparent;			
+		height:130px; 
+		margin-left:0;  
+		margin-bottom:0; 
+	  padding-right: 30px;
+		
+				
+}
+
+
+/* 타이틀 부분  */
+
+.titImg { 	
+		
+		position: relative;
+		float: left;
+		left: 120px;
+		top: 20px;
+		width: auto; height: auto;
+   		max-width: 100px;
+    	max-height: 100px;
+		visibility:none;
+								
+}
+
+
+
+/* 로그인 부분  */
+
+
+
+
+
+
+
+
+/* 카트 부분 
+*/
+
+
+
+
+
+
+/* 어드민 부분 
+*/
+
+.boardImg {
+	
+		position: relative;	
+		float: right;	
+		top: 35px;
+		width: auto; height: auto;
+   		max-width: 70px;
+    	max-height: 70px;		
+				
+						
+}
+
+
+
+
+
+
+/* -------- 【body】 --------   */
+
+
+
+/* 바디 전체 영역  */
+
+#bodyGroup { 
+		
+	
+	background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    background-size: cover;
+		
+	
+
+}
+
+.goodsBt{
+	
+		position: relative;	
+		float: left;
+		left: 8px;
+		top: 10px;
+		
+
+}	
+	
+
+
+
+.rollover{
+	
+		position: relative;	
+		float: left;
+		width:20%; 
+	
+	background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    background-size: cover;
+	
+}
+
+
+.GoodsGrop{
+			
+		position: relative;	
+		float: left;		
+		margin-left: auto;
+		margin-right: auto;	
+		left: ;	
+		
+	
+	}
+	
+	
+
+
+/* -------- 【right】 --------   */
+
+
+
+/* 오른쪽 전체 영역   */
+
+
+
+#rightGroup { 
+	
+		position: absolute;
+		float: left;
+		top: -5px;
+		left: 41.5%;
+		right: 0;
+		width:1100px; 
+		height: 100vw;		
+		background: #ffffff;		
+		display:none;
+					
+}
+
+
+
+.product_de{
+	position: relative;	
+	float: left;
+	left: 22px;
+	width:1100px;
+	height:100vw;
+	
+	/*
+		width:1150px;
+	height:100%;	
+	*/
+
+}
+
+.cartPop{	
+	width: 7%;
+	height: 18%;
+	position: fixed;
+	float: right;
+	top: 8%;
+	left: 35%;
+	border-color: transparent;
+	background-image: url("../img/back.png");
+}
+

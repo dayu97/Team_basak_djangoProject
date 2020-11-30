@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basak signup</title>
+
+<!--********** 【 css 링크 걸기 】**********
+-->
+
+
+<link rel="stylesheet" type="text/css" href="../static/css/singup.css" media="all" />
+
+<!--********** 【 js 링크 걸기 】********** -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script src="../static/js/signup.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body>
+
+<form class="signupForm" action="insert_member" method="post" name="frm">
+{% csrf_token %}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Tabs Titles -->
+	<h4 align=center>Register</h4>
+
+
+    <!-- 맴버 Form -->
+
+    <div class="form-group">
+    <p1><label class="inputId">ID<img src="" class="imgTitle"></label></p1>
+      <input type="text" id="mid" class="fadeIn first" name="mid" placeholder="ID">
+      <span id="target" class="checkMessage">{{msg}}</span>
+       <div id="idmessage"  class= "checkMessage" style="display:none;"></div>
+
+   </div>
+
+    <div class="form-group">
+    <p2><label class="inputPassword">PASSWORD<img src="" class="imgTitle"></label></p2>
+      <input type="password" id="mpw" class="fadeIn second" name="mpw" placeholder="*******">
+       <div id="pwmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+      <div class="form-group">
+   <p2><label class="inputPasswordCheck">PASSWORD CON<img src="" class="imgTitle"></label></p2>
+      <input type="password" id="pwd_con" class="fadeIn third" name="pwd_con" placeholder="*******">
+       <div id="pwcmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+      <div class="form-group">
+      <p2><label class="inputName">NAME<img src="" class="inputName" ></label></p2>
+      <input type="text" id="mname" class="fadeIn third" name="mname" placeholder="Name">
+       <div id="namemessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+
+      <div class="form-group">
+      <p2><label class="inputAddr">ADDR<img src="" class="inputAddr"></label></p2>
+      <input type="text" id="maddress" class="fadeIn fourth" name="maddress" placeholder="Addr">
+       <div id="addrmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+
+       <div class="form-group">
+       <p2><label class="inputMobile">PHONE</label></p2>
+      <input type="text" id="mphone" class="fadeIn fourth" name="mphone" placeholder="Phone">
+       <div id="telmessage"  class= "checkMessage" style="display:none;"></div>
+   </div>
+   					<div class="agree-group">
+                    <div data-toggle="buttons" align="center">
+	                    <label class="agreeBut">
+	                    <input id="agree" type="checkbox" value="off">
+                  		<p2><label class="inputagree">이용약관에 동의합니다</label></p2>
+	                    </label>
+                    </div>
+           			</div>
+	 	<input type="submit" class="join-submit" id="join" value="SignUp">
+
+
+<!--		<input type="button" class="join-submit" id="join" value="SignUp">-->
+
+
+
+      <input type="reset" class="join-close" value="Reset">
+
+  </div>  <!--  div id="formContent  -->
+
+</div> <!--  wrapper fadeInDown  -->
+
+
+</form>
+</body>
+</html>

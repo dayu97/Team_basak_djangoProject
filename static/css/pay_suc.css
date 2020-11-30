@@ -1,0 +1,185 @@
+
+@font-face {
+    font-family: 'BBTreeGR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'BBTreeGR';
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+
+div {
+    display: block;
+}
+
+li {
+    list-style: none;
+    line-height: 2.0;
+}
+
+.layer_wrap {
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 210;
+}
+
+
+.layer_wrap .box {
+    background: #fff;
+    border: 2px solid #555;
+}
+
+
+
+.layer_wrap .box .view {
+    position: relative;
+    margin: 14px 20px;
+}
+
+.layer_wrap .box .view h2 {
+    padding: 0 0 13px;
+    border-bottom: 1px solid #999999;
+    color: #000;
+    font-size: 18px;
+}
+
+.layer_wrap .scroll_box {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.add_cart_layer {
+    width: 405px;
+    min-height: 312px;
+}
+
+.add_cart_layer p.success {
+    background: url(../img/pay_suc.jpg) no-repeat center top;
+}
+
+.add_cart_layer p {
+    margin: 30px 0 0;
+    padding: 80px 0 0;
+    color: #222;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    background: url(../img/pay_suc.jpg) no-repeat center top;
+}
+
+.add_cart_layer .btn_box {
+    padding: 29px 0 0 0;
+    text-align: center;
+}
+
+.add_cart_layer .btn_cancel {
+    min-width: 74px;
+    padding: 10px 10px 9px 10px;
+    border: 1px solid #cccccc;
+    color: #3e3d3c;
+    background: #ffffff;
+    font-weight: bold;
+}
+
+.add_cart_layer .btn_confirm:hover {
+    border: 1px solid #9b344a;
+    background: #9b344a;
+}
+.add_cart_layer .btn_confirm {
+    min-width: 74px;
+    padding: 10px 10px 9px 10px;
+    margin: 0 0 0 6px;
+    border: 1px solid #ab3e55;
+    color: #ffffff;
+    background: #ab3e55;
+    font-weight: bold;
+}
+
+
+.layer_wrap .box .view {
+    position: relative;
+    margin: 14px 20px;
+}
+.layer_wrap .box .view .close {
+    display: block;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    text-indent: -9999px;
+    background: url(../img/layer-close.png) no-repeat left top;
+    cursor: pointer;
+}
+
+img,fieldset {
+    border: 0 none;  
+    align : middle;
+}
+}
+
+
+em {
+    font-style: italic;
+}
+
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+
+.add_cart_layer {
+    width: 405px;
+    min-height: 312px;
+}
+
+.add_cart_layer .btn_box {
+    padding: 29px 0 0 0;
+    text-align: center;
+}
+
+
+
+
+input, select, textarea, button {
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.layer_wrap .box .view h2 {
+    padding: 0 0 13px;
+    border-bottom: 1px solid #999999;
+    color: #000;
+    font-size: 18px;
+}

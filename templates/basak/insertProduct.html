@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+<html>
+<head>
+
+
+
+<!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/insertProduct.css" media="all" />
+
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript" src="/scripts.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<title>상품 등록</title>
+</head>
+<body>
+		<h1 align="center">상품 등록</h1>
+		<hr>
+		<form id="insertPd" action="saveProduct" method='post' enctype="multipart/form-data">
+			{% csrf_token %}
+			<table class="gpTable">
+				<tr>
+					<td>품목</td>
+					<td align="left"><input type="radio" size="10" name='pTYPE' value='쿠키'/><d>쿠키</d>
+						<input type="radio" size="10" name='pTYPE' value='파이'/><d>파이</d>
+					<input type="radio" size="10" name='pTYPE' value='시리얼'/><d>시리얼</d>
+					<input type="radio" size="10" name='pTYPE' value='견과류'/><d>견과류</d>
+					<input type="radio" size="10" name='pTYPE' value='스낵'/><d>스낵</d>  </td>
+				</tr>
+				<tr>
+					<td>상품메인이미지</td>
+					<td align="left"><input type="file" name='pIMAGE1' size="40"/></td>
+				</tr>
+				<tr>
+					<td>상품상세이미지</td>
+					<td align="left"><input type="file" name='pIMAGE2' size="40"/></td>
+				</tr>
+				<tr>
+					<td>상품명</td>
+					<td align="left"><input type="text" name='pNAME' size="40"/></td>
+				</tr>
+				<tr>
+					<td>가격</td>
+					<td align="left"><input type="text" name='pPRICE' size="40"/></td>
+				</tr>
+				<tr>
+					<td>재고</td>
+					<td align="left"><input type="text" name='pAMOUNT' size="40"/></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" align="center"><input type="submit"	class="gpbutton" value=" 새 상품 등록 " /></td>
+				</tr>						
+			</table>
+		</form>
+		<hr>
+
+		<button type="button" class="gpbutton" onclick="location.href='getProductList' ">상품목록</button>
+
+</body>
+</html>

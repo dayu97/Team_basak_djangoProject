@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<meta name="google-translate-customization"
+	content="6f1073ba568f1202-9c8990a4b3025b3e-ga74e3ea243d3f01d-14"/>
+<title>상세 페이지</title>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<link rel="stylesheet" href="{{baseUrl}}/css/product_de.css"/>
+
+<script>
+   $(function(){
+
+	let count=1;
+	let price = {{pPRICE}};
+
+
+	$('.up').click(function() {
+		var n = $('.up').index(this);
+		var num = $(".cnt:eq(" + n + ")").val();
+		num = $(".cnt:eq(" + n + ")").val(num * 1 + 1);
+
+	});
+
+	$('.down').click(function() {
+		var $this = $('.cnt');
+		var n = $('.down').index(this);
+		var num = $(".cnt:eq(" + n + ")").val();
+		num = $(".cnt:eq(" + n + ")").val(num * 1 - 1);
+
+	});
+
+<!-- 수량 조절  -->
+
+	$('#add').click(function(){
+	 count++;
+	price = {{pPRICE}}*count
+		$('.sum').text(price);
+	});
+	$('#min').click(function(){
+			 --count;
+				price = {{pPRICE}} * count ;
+				$('.sum').text(price);
+	});
+
+	$('#cart_add').click(function(){
+		window.open('cart_add?pID={{pID}}&mid={{request.session.user_mid}}&pAMOUNT='+count)
+	});
+
+	$('#buyBtn').click(function(){
+		window.open('cart_add?pID={{pID}}&mid={{request.session.user_mid}}&pAMOUNT='+count)
+	});
+});
+
+
+</script>
+
+
+
+</head>
+<body style="margin-left: auto; margin-right: auto;">
+
+	<div id="container">
+		<div id="contents">
+
+			<div class="sub_content">
+				<!-- //side_cont -->
+				<div class="content_box">
+					{{request.session.user_mid}}님, 반갑습니다.
+					<!-- 상품 상단 -->
+					<div class="item_photo_info_sec">
+						<div class="item_photo_view_box">
+							<div class="item_photo_view">
+								<div class="item_photo_big">
+									<img src="{{baseUrl}}/img/{{pIMAGE}}">
+
+								</div>
+								<!-- //item_photo_big -->
+							</div>
+							<!-- //item_photo_view -->
+						</div>
+						<!-- //item_photo_view_box -->
+
+
+						<form name="frmView" id="frmView" method="post">
+							<div class="item_info_box">
+								<!-- //time_sale -->
+								<div class="item_tit_detail_cont">
+									<div class="item_detail_tit">
+										<h3 name='과자' value='과자'>
+										</h3>
+									</div>
+									<div class="item_detail_list">
+									<dl class="item_price">
+											<dt name="pNAME" value='{{pNAME}}'>상품명</dt>
+											<dd>
+												<strong><strong>{{pNAME}}</strong></strong>
+											</dd>
+										</dl>
+										<dl class="item_price">
+											<dt name="pPRICE" value='{{pPRICE}}'>판매가</dt>
+											<dd>
+												<strong><strong>{{pPRICE}}</strong></strong>원
+											</dd>
+										</dl>
+										<dl class="item_price">
+											<dt name="pTYPE" value='{{pTYPE}}'>카테고리</dt>
+											<dd>
+												<strong><strong>{{pTYPE}}</strong></strong>
+											</dd>
+										</dl>
+										<dl>
+											<dt>상품코드</dt>
+											<dd>{{pID}}</dd>
+										</dl>
+										<dl>
+											<dt>재고</dt>
+											<dd class="min">
+												{{pAMOUNT}}</dd>
+										</dl>
+
+									</div>
+									<!-- //item_detail_list -->
+									<div class="item_choice_list">
+										<table class="option_display_area" border="0" cellpadding="0"
+											cellspacing="0">
+											<colgroup>
+												<col width="330px">
+												<col>
+												<col width="80px">
+												<col width="40px">
+											</colgroup>
+											<tbody id="option_display_item_0">
+												<tr class="check optionKey_0">
+													<td class="cart_prdt_name">
+														<input type="hidden" name="pTYPE" value="{{pTYPE}}">
+														<div class="cart_tit_box">
+															<strong class="cart_tit"> <span
+																class="cart_btn_box"> </span> <span
+																id="option_text_display_0"></span>
+															</strong>
+														</div> <!-- //cart_tit_box --></td>
+													<!-- //cart_prdt_name -->
+													<td><span class="count">
+															<span class="goods_qty">
+															<input type="text" name="cnt" class="cnt" id="cnt "title="수량" value="1"  >
+															<span>
+															<button type="button" class="up goods_cnt" name="add" id="add" title="증가">증가</button>
+															<button type="button" class="down goods_cnt" name="min" id="min" title="감소">감소</button>
+															</span>
+														</span>
+													</span> <!-- //count --></td>
+													<td class="item_choice_price">
+														<strong class="option_price" class="price" name="pPRICE" value="{{pPRICE}}">
+															<d class="sum">
+																{{pPRICE}}</d></strong>원</td>
+
+													<!-- //item_choice_price -->
+												</tr>
+											</tbody>
+										</table>
+										<div class="item_price_cont">
+											<div class="end_price item_tatal_box">
+
+												<dl class="total_amount">
+													<dt>총 합계금액</dt>
+													<dd>
+														<strong class="total_price"><d class="sum">{{pPRICE}}</d><b>원</b></strong>
+													</dd>
+												</dl>
+											</div>
+											<!-- //item_tatal_box -->
+										</div>
+										<!-- //item_price_cont -->
+									</div>
+									<!-- //item_choice_list -->
+									<div class="btn_choice_box">
+
+
+                                    	<img src="{{baseUrl}}/img/buy_now.png" alt="바로 구매" id="buyBtn" class="btn_add_order">
+
+                                    	<img src="{{baseUrl}}/img/add_cart.png" alt="장바구니" id="cart_add" class="btn_add_cart">
+
+									</div>
+									<!-- //btn_choice_box -->
+									<!-- //pay_box -->
+								</div>
+								<!-- //item_tit_detail_cont -->
+							</div>
+							<!-- //item_info_box -->
+						</form>
+					</div>
+					<!-- //item_photo_info_sec -->
+					<!-- //상품 상단 끝 -->
+					<!-- 상품상세 -->
+					<div class="item_goods_sec">
+						<div id="detail">
+							<!-- //item_goods_tab -->
+							<div class="detail_cont">
+								<h3>상품상세정보</h3>
+								<div class="detail_explain_box">
+									<div align="center" style="text-align: center;">
+										<br> <br>
+
+										<!--상세-->
+
+
+										<img src="{{baseUrl}}/img/{{pIMAGE2}}" >
+
+									</div>
+								</div>
+								<!-- //detail_explain_box -->
+
+							</div>
+							<!-- //detail_cont -->
+						</div>
+					</div>
+					<!-- //item_goods_sec -->
+					<!-- //상품상세 끝 -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

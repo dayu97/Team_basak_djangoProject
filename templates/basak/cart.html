@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "" as baseUrl %}
+
+
+<html>
+
+
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="google-translate-customization"
+	content="6f1073ba568f1202-9c8990a4b3025b3e-ga74e3ea243d3f01d-14"></meta>
+<!-- 세계 언어선택 메타 태그 -->
+
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<!-- <script type="text/javascript" src="./cart.js"></script> -->
+
+<title>장바구니</title>
+<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/cart.css">
+
+<script>
+//체크박스 클릭에따른 수량&가격변동 함수선언
+var checkResult = function(){
+
+	//개별선택 체크박스에 따른 전체선택 체크박스 변화
+	if( $("input[name=cartList]").length == $("input[name=cartList]:checked").length ){
+		$('#allCheck1').prop("checked", true);
+	}else{
+		$('#allCheck1').prop("checked", false);
+	}
+
+	//체크박스에 따른 수량&가격
+	var count = 0;
+	var totPrice = 0;
+	var carryPrice = 3000;
+	var cnt = 0;
+
+	$("[id^=count]").each(function(){
+		if( $('input[name=cartList]:eq(' + cnt + ')').is(':checked') ){
+			count = count + parseInt($(this).text().split("개")[0])
+		}
+		cnt++
+	})
+
+	cnt = 0
+	$("[id^=tot_price]").each(function(){
+		if( $('input[name=cartList]:eq(' + cnt + ')').is(':checked') ){
+			totPrice = totPrice + parseInt($(this).text().split("원")[0])
+		}
+		cnt++
+	})
+
+	//30개 초과시마다 배송비 3천원 부과
+	temp = count
+	if(temp >= 30){
+		while(temp >=30){
+			temp = temp-30;
+			carryPrice = carryPrice + 3000
+		}
+	}
+
+	//5만원 이상 배송비 무료
+	if ( totPrice >= 50000 ){
+		carryPrice = 0;
+	}
+
+	$('#totalGoodsCnt').text(count)
+	$('#totalGoodsPrice').text(totPrice)
+	$('#totalSettlePrice').text(totPrice+carryPrice)
+	$('#totalDeliveryCharge').text(carryPrice)
+}
+
+
+$(document).ready(function(){
+
+	//첫 수량&가격
+	checkResult()
+
+	//전체선택 체크박스
+	$('#allCheck1').change(function(){
+		if( $("#allCheck1").is(':checked') ){
+		  $("input[name=cartList]").prop("checked", true);
+		}else{
+		  $("input[name=cartList]").prop("checked", false);
+		}
+		checkResult()
+	})
+
+	//개별선택 체크박스
+	$('input[name=cartList]').change(function(){
+		checkResult()
+	})
+
+	//선택상품 삭제
+	$('.btn_order_choice_del').click(function(){
+		if(confirm("삭제하시겠습니까?") == true){
+			var cart_id = "";
+
+			$("input[name=cartList]:checked").each(function(){
+				cart_id = cart_id + ',' + $(this).next().val()
+			})
+			cart_id = cart_id.substr(1,)
+
+			$.ajax({
+				type : 'GET',
+				url : "delete?cart_id=" + cart_id,
+				success : function(){
+					alert("선택 항목이 삭제되었습니다!!")
+					location.href="cart";
+				},
+				error : function(){
+					alert("에러");
+				}
+			});
+		}else{
+			return;
+		}
+	})
+
+	//선택상품 주문
+	$('.btn_order_whole_buy').click(function(){
+		if(confirm("주문 하시겠습니까?") == true){
+			var cart_id = "";
+			$("input[name=cartList]:checked").each(function(){
+				cart_id = cart_id + ',' + $(this).next().val()
+			})
+			cart_id = cart_id.substr(1,)
+			location.href="pay?cart_id=" + cart_id
+		}else{
+			return;
+		}
+	})
+})
+
+</script>
+
+</head>
+
+
+<body>
+
+	<div class="box_dashed" style="margin-left: auto; margin-right: auto;">
+		<div class="icon_img">
+			<div class="img" style="font-size:30px">
+				🛒
+			</div>
+		</div>
+		<ul>
+			<li>까까나라는 5만원 이상 구매시 무료배송을 지원해 드리고 있습니다🥰<li>
+			<li>장바구니에 담은 상품들을 한꺼번에 주문 시 묶음 배송을 하실 수 있습니다.</li>
+			<li>따로 따로 여러번 결제 시 중복 계산된 배송비는 게시판으로 문의 주시면 환불 도와드리겠습니다❣</li>
+		</ul>
+	</div>
+	<div class="sub_content">
+		<!-- //side_cont -->
+		<div class="content_box">
+			<div class="order_wrap" style="margin-left: auto; margin-right: auto;">
+				<div class="order_tit">
+					<h2>장바구니</h2>
+					<ol>
+						<li class="page_on"><span>01</span> 장바구니 <span>&nbsp;👉&nbsp;</span></li>
+						<li><span>02</span> 주문서작성/결제<span>
+						&nbsp;👉&nbsp;</span></li>
+						<li><span>03</span> 주문완료</li>
+					</ol>
+				</div>
+				<!-- //order_tit -->
+				<div class="cart_cont">
+					<form id="frmCart" name="frmCart" method="post" target="ifrmProcess">
+<!-- 						
+						<-- 장바구니 상품리스트 시작 -->
+						<div class="cart_cont_list">
+							<div class="order_cart_tit"></div>
+							<!-- //order_cart_tit -->
+							<div class="order_table_type">
+								<table style="margin-left: auto; margin-right: auto;">
+									<colgroup>
+										<col style="width: 3%">
+										<!-- 체크박스 -->
+										<col style="width: auto">
+										<!-- 상품명/옵션 -->
+										<col style="width: 13%">
+										<!-- 수량 -->
+										<col style="width: 10%">
+										<!-- 상품금액 -->
+										<col style="width: 13%">
+										<!-- 합계금액 -->
+										<col style="width: 15%">
+										<!-- 배송비 -->
+									</colgroup>
+									<thead>
+										<tr>
+											<th>
+												<div class="form_element">
+													<input type="checkbox" id="allCheck1"
+														class="gd_select_all_goods" data-target-id="cartSno1_"
+														data-target-form="#frmCart" checked="checked"> <label
+														for="allCheck1" class="check_s on"></label>
+												</div>
+											</th>
+											<th>상품/옵션 정보</th>
+											<th>수량</th>
+											<th>상품금액</th>
+											<th>합계금액</th>
+											<th>배송비</th>
+
+										</tr>
+									</thead>
+									<tbody>
+
+									<input type="hidden" id="sessionMid" value="{{mid}}">
+
+
+				{% if cartList != None %}
+					{% for list in cartList %}
+										<tr>
+											<td class="td_chk">
+												<div class="form_element">
+													<input type="checkbox" id="cart_add" name="cartList" checked="checked">
+													<input type="hidden" id="pid" value="{{list.5}}">
+													<label for="cartSno1_339855" class="check_s on"></label>
+												</div>
+											</td>
+											<td class="td_left">
+												<div class="pick_add_cont">
+													<span class="pick_add_img"> 
+															<img
+															src="{{baseUrl}}/img/product_over_{{list.4}}.png"
+															width="100" alt="{{list.3}}" title="{{list.3}}"
+															class="middle">
+													
+													</span>
+													<div class="pick_add_info">
+
+														<em><a href="">{{list.3}}</a></em>
+														<div class="pick_option_box"></div>
+														<div class="pick_option_box"></div>
+													</div>
+												</div> 
+											</td>
+											<td class="td_order_amount">
+												<div class="order_goods_num">
+													<strong id="count{{forloop.counter0}}">{{list.0}}개</strong>
+												</div>
+											</td>
+											<td><strong class="order_sum_txt price">{{list.1}}원</strong>
+												<p class="add_currency"></p></td>
+
+											<!-- JS -->
+											<td><strong class="order_sum_txt" id="tot_price{{forloop.counter0}}">{{list.2}}원</strong>
+												<p class="add_currency"></p></td>
+											<td class="td_delivery" rowspan="1">30개마다 부과<br>
+												3,000원 <br> (택배) <br>
+											</td>
+										</tr>
+
+					{% endfor %}
+
+
+									</tbody>
+
+								</table>
+							</div>
+						</div>
+
+				{% else %}
+
+						<p class="no_data">장바구니에 담겨있는 상품이 없습니다.</p>
+
+				{% endif %}
+					</form>
+					<br/><br/><br/>
+					<div class="price_sum" style="margin-left: auto; margin-right: auto;">
+						<div class="price_sum_cont">
+							<div class="price_sum_list" >
+								<dl>
+									<dt>
+										총 <strong id="totalGoodsCnt">1</strong> 개의 상품금액
+									</dt>
+									<dd>
+										<strong id="totalGoodsPrice">0</strong>원
+									</dd>
+								</dl>
+								<span>&nbsp;➕&nbsp;</span>
+								<dl>
+									<dt>배송비</dt>
+									<dd>
+										<strong id="totalDeliveryCharge">0</strong>원
+									</dd>
+								</dl>
+								<span>&nbsp;▶&nbsp;</span>
+								<dl class="price_total">
+									<dt>합계</dt>
+									<dd>
+										<strong id="totalSettlePrice">0</strong>원
+										<div class="add_currency">
+											<em id="totalSettlePriceAdd"></em>
+										</div>
+									</dd>
+								</dl>
+							</div>
+							<em id="deliveryChargeText" class="tobe_mileage"></em>
+						</div>
+						<!-- //price_sum_cont -->
+					</div>
+					<!-- //price_sum -->
+				</div>
+				<!-- //cart_cont -->
+			</div>
+			<!-- //order_wrap -->
+		</div>
+		<!-- //content_box -->
+		<div class="btn_order_box">
+			<span class="btn_left_box">
+
+				<button type="button" class="btn_order_choice_del">선택 상품 삭제</button>
+				<a href="/basak">
+				<button type="button" class="">쇼핑 계속 하기</button></a>
+			</span> 
+			<span class="btn_right_box">
+				<a><button type="button" class="btn_order_whole_buy" >상품 주문</button></a>
+			</span>
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>
+
