@@ -9,7 +9,9 @@
 <br/>
 1. 압축을 해제한다.<br/>
 2. db.sql문에 데이터베이스에 실행한다.<br/>
-3. context.xml : 아이디, 비밀번호 변경 
+3. context.xml : 아이디, 비밀번호 변경<br/>
+4. config/settings.py 와 config/urls.py 알맞게 변경<br/>
+5. 실행 시는 -> #python manage.py runserver '0.0.0.0:9000'<br/>
 <br/>
 <br/>
 <br/>
