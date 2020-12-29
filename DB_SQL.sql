@@ -64,110 +64,110 @@ CREATE SEQUENCE SEQ_TPBOARD
 
 
 --
---±âº» ¸ÞÀÎÆäÀÌÁö insert¹®
+--ê¸°ë³¸ ë©”ì¸íŽ˜ì´ì§€ insertë¬¸
 
 
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (1, 'ÄíÅ°', 'ÇåÆ²¸®¾ØÆÈ¸Ó½º Å©·¡Ä¿ 7Á¾', 3000, 100,'product_out_1.png', 'product_1_detail.jpg');
+  (1, 'ì¿ í‚¤', 'í—Œí‹€ë¦¬ì•¤íŒ”ë¨¸ìŠ¤ í¬ëž˜ì»¤ 7ì¢…', 3000, 100,'product_out_1.png', 'product_1_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (2, 'ÄíÅ°', '´Ù³ë¼¥ ºê¶ó¿î ¶óÀÌ½º ¼Ò¿ï 6Á¾', 1500, 100,'product_out_2.png', 'product_2_detail.jpg');
+  (2, 'ì¿ í‚¤', 'ë‹¤ë…¸ìƒµ ë¸Œë¼ìš´ ë¼ì´ìŠ¤ ì†Œìš¸ 6ì¢…', 1500, 100,'product_out_2.png', 'product_2_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (3, 'ÄíÅ°', 'Ä«½ºÅ×ÀÌºí¿öÅÍ ¿µ±¹ Å©·¡Ä¿ 4Á¾', 1790, 150,'product_out_3.png', 'product_3_detail.jpg');
+  (3, 'ì¿ í‚¤', 'ì¹´ìŠ¤í…Œì´ë¸”ì›Œí„° ì˜êµ­ í¬ëž˜ì»¤ 4ì¢…', 1790, 150,'product_out_3.png', 'product_3_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (4, 'ÆÄÀÌ', 'ÃÊÄÚÆÄÀÌ ÇÏ¿ì½º ÃÊÄÚÆÄÀÌ 6Á¾ ', 2500, 150,'product_out_4.png', 'product_4_detail.jpg');
+  (4, 'íŒŒì´', 'ì´ˆì½”íŒŒì´ í•˜ìš°ìŠ¤ ì´ˆì½”íŒŒì´ 6ì¢… ', 2500, 150,'product_out_4.png', 'product_4_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (5, 'ÄíÅ°', '´íÄÉÀÌÅ© ½Ì±Û¼­ºê ¹öÅÍÄíÅ° 18ÀÔ', 8100, 200,'product_out_5.png', 'product_5_detail.jpg');
+  (5, 'ì¿ í‚¤', 'ëŒ„ì¼€ì´í¬ ì‹±ê¸€ì„œë¸Œ ë²„í„°ì¿ í‚¤ 18ìž…', 8100, 200,'product_out_5.png', 'product_5_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (6, 'ÄíÅ°', '°¡º¸¶ß ÇÁ¶û½º Å©·¹Æäµ§ÅÚ', 4900, 200,'product_out_6.png', 'product_6_detail.jpg');
+  (6, 'ì¿ í‚¤', 'ê°€ë³´ëœ¨ í”„ëž‘ìŠ¤ í¬ë ˆíŽ˜ë´í…”', 4900, 200,'product_out_6.png', 'product_6_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (7, 'ÄíÅ°', '¼öÁ¦´Þ°í³ª È¨Ä«Æä ÅäÇÎ ', 3790, 100,'product_out_7.png', 'product_7_detail.jpg');
+  (7, 'ì¿ í‚¤', 'ìˆ˜ì œë‹¬ê³ ë‚˜ í™ˆì¹´íŽ˜ í† í•‘ ', 3790, 100,'product_out_7.png', 'product_7_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (8, '½Ã¸®¾ó', 'Å©³î¶ó ±×·¡³î¶ó', 10000, 100,'product_out_8.png', 'product_8_detail.jpg');
+  (8, 'ì‹œë¦¬ì–¼', 'í¬ë†€ë¼ ê·¸ëž˜ë†€ë¼', 10000, 100,'product_out_8.png', 'product_8_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (9, 'ÄíÅ°', 'ÇÃ¶óÇÏ¹Ý À¯±â³ó ¿ÀÆ®¹Ð', 13000, 150,'product_out_9.png', 'product_9_detail.jpg');
+  (9, 'ì¿ í‚¤', 'í”Œë¼í•˜ë°˜ ìœ ê¸°ë† ì˜¤íŠ¸ë°€', 13000, 150,'product_out_9.png', 'product_9_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (10, 'ÄíÅ°', '¿À¶¿µÎ½º »çºê·¹', 5000, 150,'product_out_10.png', 'product_10_detail.jpg');
+  (10, 'ì¿ í‚¤', 'ì˜¤ë—„ë‘ìŠ¤ ì‚¬ë¸Œë ˆ', 5000, 150,'product_out_10.png', 'product_10_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (11, 'ÄíÅ°', '³×ÀÌÃ³ ¿À´Ù Çö¹Ì ´ÞÄ¨', 2000, 200,'product_out_11.png', 'product_11_detail.jpg');
+  (11, 'ì¿ í‚¤', 'ë„¤ì´ì²˜ ì˜¤ë‹¤ í˜„ë¯¸ ë‹¬ì¹©', 2000, 200,'product_out_11.png', 'product_11_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (12, 'ÄíÅ°', 'Áê´ÏÄíÅ° »ç¸£¸£ ¸Ó·©ÄíÅ°', 6500, 200,'product_out_12.png', 'product_12_detail.jpg');
+  (12, 'ì¿ í‚¤', 'ì¥¬ë‹ˆì¿ í‚¤ ì‚¬ë¥´ë¥´ ë¨¸ëž­ì¿ í‚¤', 6500, 200,'product_out_12.png', 'product_12_detail.jpg');
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (13, 'ÄíÅ°', '¶ó¸Þ¸£Ç®¶ó¸£ ÇÁ¶û½º ÀüÅëÄíÅ°', 4000, 100,'product_out_13.png', 'product_13_detail.jpg');
-
-
-INSERT INTO TPPRODUCT
-  (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
-VALUES
-  (14, '°ß°ú·ù', '¸¶¿ì³ª·Î¾Æ ¸¶Ä«´Ù¹Ì¾Æ', 3000, 100,'product_out_14.png', 'product_14_detail.jpg');
+  (13, 'ì¿ í‚¤', 'ë¼ë©”ë¥´í’€ë¼ë¥´ í”„ëž‘ìŠ¤ ì „í†µì¿ í‚¤', 4000, 100,'product_out_13.png', 'product_13_detail.jpg');
 
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (15, 'ÄíÅ°', 'zott ¸óÅ×½º³¼', 7900, 150,'product_out_15.png', 'product_15_detail.jpg');
+  (14, 'ê²¬ê³¼ë¥˜', 'ë§ˆìš°ë‚˜ë¡œì•„ ë§ˆì¹´ë‹¤ë¯¸ì•„', 3000, 100,'product_out_14.png', 'product_14_detail.jpg');
 
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (16, '½º³¼', '³»Ãß·² ÃÊÀÌ½º °úÀÏ°ÇÁ¶Ä¨', 2900, 150,'product_out_16.png', 'product_16_detail.jpg');
+  (15, 'ì¿ í‚¤', 'zott ëª¬í…ŒìŠ¤ë‚µ', 7900, 150,'product_out_15.png', 'product_15_detail.jpg');
 
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (17, '½º³¼', '»ê´ÏÄ«½Ã¿À ¿¢½ºÆ®¶ó¹öÁø °¨ÀÚÄ¨', 5950, 200,'product_out_17.png', 'product_17_detail.jpg');
+  (16, 'ìŠ¤ë‚µ', 'ë‚´ì¶”ëŸ´ ì´ˆì´ìŠ¤ ê³¼ì¼ê±´ì¡°ì¹©', 2900, 150,'product_out_16.png', 'product_16_detail.jpg');
 
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (18, 'ÃÊÄÝ·¿', '°³ºñ½ºÄÜ ¹Ù»è ÇÁ·ÎÁ§Æ®', 100000000, 100,'product_out_18.png', 'product_18_detail.jpg');
+  (17, 'ìŠ¤ë‚µ', 'ì‚°ë‹ˆì¹´ì‹œì˜¤ ì—‘ìŠ¤íŠ¸ë¼ë²„ì§„ ê°ìžì¹©', 5950, 200,'product_out_17.png', 'product_17_detail.jpg');
 
 
 INSERT INTO TPPRODUCT
   (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
 VALUES
-  (19, 'ÃÊÄÝ·¿', '¹Ù»è', 15000, 10, 'product_out_19.png', 'product_19_detail.jpg');
+  (18, 'ì´ˆì½œë ›', 'ê°œë¹„ìŠ¤ì½˜ ë°”ì‚­ í”„ë¡œì íŠ¸', 100000000, 100,'product_out_18.png', 'product_18_detail.jpg');
+
+
+INSERT INTO TPPRODUCT
+  (PID, PTYPE, PNAME, PPRICE, PAMOUNT, PIMAGE1, PIMAGE2)
+VALUES
+  (19, 'ì´ˆì½œë ›', 'ë°”ì‚­', 15000, 10, 'product_out_19.png', 'product_19_detail.jpg');
 
 
 
@@ -175,22 +175,22 @@ VALUES
 INSERT INTO TPBOARD
   (bID, mID, bCATEGORY, bTITLE, bCONTENTS, bRDATE)
 VALUES
-  (SEQ_TPBOARD.nextval, 'sho120', 'È¸¿ø¹®ÀÇ', 'Å¸ÀÌÆ²Å¸ÀÌÆ²', 'ÄÜÅÙÃ÷ÄÜÅÙÃ÷', '');
+  (SEQ_TPBOARD.nextval, 'sho120', 'íšŒì›ë¬¸ì˜', 'íƒ€ì´í‹€íƒ€ì´í‹€', 'ì½˜í…ì¸ ì½˜í…ì¸ ', '');
 
 INSERT INTO TPBOARD
   (bID, mID, bCATEGORY, bTITLE, bCONTENTS, bRDATE)
 VALUES
-  (SEQ_TPBOARD.nextval, 'sho120', 'È¸¿ø¹®ÀÇ', 'Å¸ÀÌÆ²Å¸ÀÌÆ²', 'ÄÜÅÙÃ÷ÄÜÅÙÃ÷', '');
+  (SEQ_TPBOARD.nextval, 'sho120', 'íšŒì›ë¬¸ì˜', 'íƒ€ì´í‹€íƒ€ì´í‹€', 'ì½˜í…ì¸ ì½˜í…ì¸ ', '');
 
 INSERT INTO TPBOARD
   (bID, mID, bCATEGORY, bTITLE, bCONTENTS, bRDATE)
 VALUES
-  (SEQ_TPBOARD.nextval, 'sho120', 'È¸¿ø¹®ÀÇ', 'Å¸ÀÌÆ²Å¸ÀÌÆ²', 'ÄÜÅÙÃ÷ÄÜÅÙÃ÷', '');
+  (SEQ_TPBOARD.nextval, 'sho120', 'íšŒì›ë¬¸ì˜', 'íƒ€ì´í‹€íƒ€ì´í‹€', 'ì½˜í…ì¸ ì½˜í…ì¸ ', '');
   
 INSERT INTO TPBOARD
   (bID, mID, bCATEGORY, bTITLE, bCONTENTS, bRDATE)
 VALUES
-  (SEQ_TPBOARD.nextval, 'sho120', 'È¸¿ø¹®ÀÇ', 'Å¸ÀÌÆ²Å¸ÀÌÆ²', 'ÄÜÅÙÃ÷ÄÜÅÙÃ÷', '');
+  (SEQ_TPBOARD.nextval, 'sho120', 'íšŒì›ë¬¸ì˜', 'íƒ€ì´í‹€íƒ€ì´í‹€', 'ì½˜í…ì¸ ì½˜í…ì¸ ', '');
 
 select * from tpboard;
 
@@ -233,7 +233,7 @@ rollback
 
 commit
 
-select * from TPBOARD where bCATEGORY='È¸¿ø¹®ÀÇ' and   bCONTENTS like '%¤»¤»%'
+select * from TPBOARD where bCATEGORY='íšŒì›ë¬¸ì˜' and   bCONTENTS like '%ã…‹ã…‹%'
 
 select * from TPBOARD where bid = 130 
 
